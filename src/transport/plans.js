@@ -6,9 +6,9 @@ const plansExtendedApi = api.injectEndpoints({
       query: (params) => {
         const { provider_id, ...restParams } = params;
         const providerParams = provider_id
-          .map((id) => `provider_id[]=${id}`)
+          ?.map((id) => `provider_id[]=${id}`)
           .join("&");
-        const url = provider_id ? `plans/?${providerParams}` : `plans/?`;
+        const url = provider_id ? `plans/?${providerParams}` : `plans/`;
         return {
           url: url,
           params: {
