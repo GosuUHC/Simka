@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
+import { useMainPage } from "../../../../viewmodel/hooks/main/mainPage";
 
 const CityAutocomplete = () => {
   const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState(["Кемерово", "Новосибирск", "Москва"]);
+  const { city, cityOptions, handleCitySelect } = useMainPage();
 
   return (
     <Autocomplete
@@ -17,7 +18,9 @@ const CityAutocomplete = () => {
       }}
       isOptionEqualToValue={(option, value) => option === value}
       getOptionLabel={(option) => option}
-      options={options}
+      options={cityOptions}
+      value={city}
+      onSelect={(e) => handleCitySelect(e.target)}
       renderInput={(params) => (
         <TextField
           {...params}

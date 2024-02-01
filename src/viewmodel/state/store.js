@@ -6,8 +6,8 @@ import { reducers } from "./slices/reducers";
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    mainPageReducer: reducers.mainPageReducer,
-    applicationFormReducer: reducers.applicationFormReducer,
+    mainPage: reducers.mainPageReducer,
+    applicationForm: reducers.applicationFormReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
