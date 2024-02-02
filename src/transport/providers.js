@@ -1,5 +1,11 @@
 import { api } from "./api";
 
+export const availableSortingOptions = {
+  POPULAR: "popular",
+  CHEAP: "cheap",
+  EXPENSIVE: "expensive",
+};
+
 const providersExtendedApi = api.injectEndpoints({
   endpoints: (build) => ({
     getProvidersSorted: build.query({

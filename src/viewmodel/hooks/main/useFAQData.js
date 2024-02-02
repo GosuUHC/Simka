@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
 
-const useFAQData = () => {
-  const { FAQData } = useSelector((state) => state.main);
+const useFAQ = () => {};
 
-  return { FAQData };
-};
-
-export { useFAQData };
+export { useFAQ };

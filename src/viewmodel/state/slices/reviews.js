@@ -2,11 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const reviewsInitialState = {
   selectedProviderIndex: null,
-  reviewsData: [],
   leaveReviewFormData: {
     name: "",
-
-  }
+  },
 };
 
 const reviews = createSlice({

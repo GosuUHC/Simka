@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCity } from "../../state/slices/address";
+import {
+  setBuildingNumber,
+  setCity,
+  setRoomType,
+  setStreet,
+} from "../../state/slices/address";
 
 const useAddress = () => {
   const dispatch = useDispatch();
@@ -12,10 +17,28 @@ const useAddress = () => {
     }
   };
 
+  const handleStreetChange = (street) => {
+    dispatch(setStreet(street));
+  };
+
+  const handleBuildingNumberChange = (buildingNumber) => {
+    dispatch(setBuildingNumber(buildingNumber));
+  };
+
+  const handleRoomTypeChange = (roomType) => {
+    dispatch(setRoomType(roomType));
+  };
+
   return {
     city,
     cityOptions,
+    street: address.street,
+    buildingNumber: address.buildingNumber,
+    roomType: address.roomType,
     handleCityChange,
+    handleStreetChange,
+    handleBuildingNumberChange,
+    handleRoomTypeChange,
   };
 };
 

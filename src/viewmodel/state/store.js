@@ -5,13 +5,12 @@ import reducers from "./reducers";
 
 export const store = configureStore({
   reducer: {
-    [api.reducerPath]: api.reducer,
     address: reducers.addressReducer,
-    application: reducers.applicationFormReducer,
+    application: reducers.applicationReducer,
     feedback: reducers.feedbackReducer,
-    main: reducers.mainReducer,
     providers: reducers.providersReducer,
     reviews: reducers.reviewsReducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
