@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const mainPageInitialState = {
+const addressInitialState = {
   city: "Кемерово",
   cityOptions: ["Кемерово", "Новосибирск", "Москва"],
-  providersData: [],
-  FAQData: [],
+  addressSelected: false,
   address: {
     street: "",
     buildingNumber: "",
@@ -12,15 +11,18 @@ const mainPageInitialState = {
   },
 };
 
-const mainPageSlice = createSlice({
-  name: "mainPage",
-  initialState: mainPageInitialState,
+const address = createSlice({
+  name: "address",
+  initialState: addressInitialState,
   reducers: {
     setCity: (state, action) => {
       state.city = action.payload;
     },
     setCityOptions: (state, action) => {
       state.city = action.payload;
+    },
+    setAddressSelected: (state, action) => {
+      state.addressSelected = action.payload;
     },
     setStreet: (state, action) => {
       state.address.street = action.payload;
@@ -31,22 +33,16 @@ const mainPageSlice = createSlice({
     setRoomType: (state, action) => {
       state.address.roomType = action.payload;
     },
-    setProvidersData: (state, action) => {
-      state.providersData = action.payload;
-    },
-    setFAQData: (state, action) => {
-      state.FAQData = action.payload;
-    },
   },
 });
 
 export const {
   setCity,
   setCityOptions,
+  setAddressSelected,
   setStreet,
   setBuildingNumber,
   setRoomType,
-  setProvidersData,
-  setFAQData,
-} = mainPageSlice.actions;
-export const mainPageReducer = mainPageSlice.reducer;
+} = address.actions;
+
+export const addressReducer = address.reducer;

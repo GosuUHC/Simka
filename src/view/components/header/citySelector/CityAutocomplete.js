@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import { useMainPage } from "../../../../viewmodel/hooks/main/mainPage";
+import useAddress from "../../../../viewmodel/hooks/address/useAddress";
 
 const CityAutocomplete = () => {
   const [open, setOpen] = useState(false);
-  const { city, cityOptions, handleCitySelect } = useMainPage();
+  const { city, cityOptions, handleCityChange } = useAddress();
+
+  console.log(`got city: ${city}`);
+
+  const onCityBlur = (event) => {
+    console.log(`onSelect city: ${event.target.value}`);
+    handleCityChange(event.target.value);
+  };
 
   return (
     <Autocomplete
@@ -20,7 +27,7 @@ const CityAutocomplete = () => {
       getOptionLabel={(option) => option}
       options={cityOptions}
       value={city}
-      onSelect={(e) => handleCitySelect(e.target)}
+      onBlur={onCityBlur}
       renderInput={(params) => (
         <TextField
           {...params}

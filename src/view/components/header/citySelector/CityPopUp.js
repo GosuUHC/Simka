@@ -12,7 +12,7 @@ import CityAutocomplete from "./CityAutocomplete";
 const CityPopUp = ({ open, handleClose }) => {
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle Enter City />
+      <DialogTitle />
       <IconButton
         aria-label="close"
         onClick={handleClose}

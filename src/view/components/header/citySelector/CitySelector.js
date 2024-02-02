@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import { Home } from "@mui/icons-material";
+import { Home as HomeIcon } from "@mui/icons-material";
 import CityPopUp from "./CityPopUp";
 
 const CitySelector = () => {
@@ -17,7 +17,7 @@ const CitySelector = () => {
   return (
     <>
       <IconButton onClick={handleOpen}>
-        <Home />
+        <HomeIcon />
       </IconButton>
       <CityPopUp open={open} handleClose={handleClose} />
     </>

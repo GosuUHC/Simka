@@ -4,6 +4,7 @@ const applicationFormInitialState = {
   address: {
     name: "",
     phoneNumber: "",
+    selectedTime: null,
   },
 };
 
@@ -17,8 +18,12 @@ const applicationFormSlice = createSlice({
     setPhoneNumber: (state, action) => {
       state.phoneNumber = action.payload;
     },
+    setSelectedTime: (state, action) => {
+      state.selectedTime = action.payload;
+    },
   },
 });
 
-export const { setName, setPhoneNumber } = applicationFormSlice.actions;
+export const { setName, setPhoneNumber, setSelectedTime } =
+  applicationFormSlice.actions;
 export const applicationFormReducer = applicationFormSlice.reducer;
