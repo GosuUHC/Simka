@@ -1,4 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
+import "react-bootstrap-typeahead/css/Typeahead.css";
+import "react-bootstrap-typeahead/css/Typeahead.bs5.css"
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

@@ -12,7 +12,7 @@ const CityPopUp = ({ show, handleClose }) => {
       aria-labelledby="contained-modal-title-vcenter"
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        <Modal.Title id="contained-modal-title"></Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
