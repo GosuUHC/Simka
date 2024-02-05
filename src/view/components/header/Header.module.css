@@ -1,11 +1,7 @@
-.header {
-    background-color: black;
+.divider {
+  margin: 0;
 }
 
-.header-lower {
-
-}
-
-.header-upper {
-
+.noLeftPaddingBtn {
+  padding-left: 0 !important;
 }

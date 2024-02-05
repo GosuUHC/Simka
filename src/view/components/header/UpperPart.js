@@ -1,86 +1,28 @@
-import AppBar from "@mui/material/AppBar";
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import { Menu as MenuIcon } from "@mui/icons-material";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import useAddress from "../../../viewmodel/hooks/address/useAddress";
+import { Heart, House } from "react-bootstrap-icons";
 import CitySelector from "./citySelector/CitySelector";
 
-const buttons = ["Поиск по адресу", "Обратный звонок", "Избранное"];
-
 const UpperPart = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography variant="h5" noWrap>
-            СИМКА
-          </Typography>
+    <Navbar bg="light" data-bs-theme="light">
+      <Container>
+        <Nav>
+          <Navbar.Brand href="#home">SIMKA</Navbar.Brand>
           <CitySelector />
-          {/*visible until shrink*/}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {buttons.map((button) => (
-              <Button
-                key={button}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {button}
-              </Button>
-            ))}
-          </Box>
-          {/*Invisible until shrink*/}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="medium"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {buttons.map((button) => (
-                <MenuItem key={button} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{button}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
+        </Nav>
+        <Nav>
+          <Nav.Link>Поиск по адресу</Nav.Link>
+          <Nav.Link>Обратный звонок</Nav.Link>
+          <Nav.Link>
+            <Heart />
+            {` Избранное`}
+          </Nav.Link>
+        </Nav>
       </Container>
-    </AppBar>
+    </Navbar>
   );
 };
 

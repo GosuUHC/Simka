@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const applicationFormInitialState = {
-  address: {
-    name: "",
-    phoneNumber: "",
-    selectedTime: null,
-  },
+  name: "",
+  phoneNumber: "",
+  selectedTime: null,
 };
 
 const applicationSlice = createSlice({

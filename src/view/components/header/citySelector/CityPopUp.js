@@ -1,37 +1,28 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-} from "@mui/material";
-import { Close } from "@mui/icons-material/";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
 import CityAutocomplete from "./CityAutocomplete";
 
-const CityPopUp = ({ open, handleClose }) => {
+const CityPopUp = ({ show, handleClose }) => {
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle />
-      <IconButton
-        aria-label="close"
-        onClick={handleClose}
-        sx={{
-          position: "absolute",
-          right: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <Close />
-      </IconButton>
-      <DialogContent>
+    <Modal
+      show={show}
+      onHide={handleClose}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+        <h4>City select</h4>
         <CityAutocomplete />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} />
-      </DialogActions>
-    </Dialog>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={handleClose}>Close</Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

@@ -1,78 +1,22 @@
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import { Menu as MenuIcon } from "@mui/icons-material";
-import AppBar from "@mui/material/AppBar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import styles from "./Header.module.css";
 
-const buttons = ["Провайдеры", "Рейтинг", "Тарифы", "Акции"];
 const LowerPart = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {buttons.map((button) => (
-              <Button
-                key={button}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {button}
-              </Button>
-            ))}
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="medium"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {buttons.map((button) => (
-                <MenuItem key={button} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{button}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
+    <Navbar bg="light" data-bs-theme="light">
+      <Container>
+        <Nav>
+          <Nav.Link className={styles.noLeftPaddingBtn}>Провайдеры</Nav.Link>
+          <Nav.Link>Рейтинг</Nav.Link>
+
+          <Nav.Link>Тарифы</Nav.Link>
+          <Nav.Link>Акции</Nav.Link>
+        </Nav>
+        <Nav.Item className={styles.noLeftPaddingBtn}>8-000-000-0000</Nav.Item>
       </Container>
-    </AppBar>
+    </Navbar>
   );
 };
 

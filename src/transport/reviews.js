@@ -5,7 +5,15 @@ const reviewsExtendedApi = api.injectEndpoints({
     getProviderReviews: build.query({
       query: (provider_id) => `reviews/${provider_id}`,
     }),
+    addNewReview: build.mutation({
+      query: (review) => ({
+        url: "/reviews",
+        method: "POST",
+        body: review,
+      }),
+    }),
   }),
 });
 
-export const { useGetProviderReviewsQuery } = reviewsExtendedApi;
+export const { useGetProviderReviewsQuery, useAddNewReviewMutation } =
+  reviewsExtendedApi;

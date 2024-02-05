@@ -1,25 +1,23 @@
 import { useState } from "react";
-import { IconButton } from "@mui/material";
-import { Home as HomeIcon } from "@mui/icons-material";
+import { House } from "react-bootstrap-icons";
+import Nav from "react-bootstrap/Nav";
+import useAddress from "../../../../viewmodel/hooks/address/useAddress";
 import CityPopUp from "./CityPopUp";
 
 const CitySelector = () => {
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const { city } = useAddress();
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
-      <IconButton onClick={handleOpen}>
-        <HomeIcon />
-      </IconButton>
-      <CityPopUp open={open} handleClose={handleClose} />
+      <Nav.Link onClick={handleShow}>
+        <House></House>
+        {` г. ${city}`}
+      </Nav.Link>
+      <CityPopUp show={show} handleClose={handleClose} />
     </>
   );
 };

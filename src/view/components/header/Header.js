@@ -1,15 +1,17 @@
 import UpperPart from "./UpperPart";
-import { Divider } from "@mui/material";
+import Navbar from "react-bootstrap/Navbar";
 import LowerPart from "./LowerPart";
+import { Col, Row } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <div className={styles.header}>
+    <>
       <UpperPart />
-      <Divider />
+      <hr className={styles.divider} />
       <LowerPart />
-    </div>
+    </>
   );
 };
 

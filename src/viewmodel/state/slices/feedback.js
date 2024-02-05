@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const feedbackInitialState = {
   reason: null,
   message: "",
-  wantToGetAnswerBackCheck: true,
+  wantToGetAnswerBack: true,
   email: "",
 };
 
@@ -17,8 +17,8 @@ const feedback = createSlice({
     setMessage: (state, action) => {
       state.message = action.payload;
     },
-    setWantToGetAnswerBackCheck: (state, action) => {
-      state.wantToGetAnswerBackCheck = action.payload;
+    setWantToGetAnswerBack: (state, action) => {
+      state.wantToGetAnswerBack = action.payload;
     },
     setEmail: (state, action) => {
       state.email = action.payload;
@@ -26,6 +26,6 @@ const feedback = createSlice({
   },
 });
 
-export const { setReason, setMessage, setWantToGetAnswerBackCheck, setEmail } =
+export const { setReason, setMessage, setWantToGetAnswerBack, setEmail } =
   feedback.actions;
 export const feedbackReducer = feedback.reducer;
