@@ -4,8 +4,7 @@ import { useGetProvidersByIdQuery } from "./transport/providers";
 import Header from "./view/components/header/Header";
 import useFeedback from "./viewmodel/hooks/feedback/useFeedback";
 import { useGetProviderReviewsQuery } from "./transport/reviews";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import Address from "./view/components/address/Address";
 
 function App() {
   // const { data, error, isLoading } = useGetPromotionsQuery(); // promotions не работает
@@ -39,7 +38,12 @@ function App() {
     }
   };
 
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <Address />
+    </>
+  );
 }
 
 export default App;

@@ -16,7 +16,10 @@ const address = createSlice({
   initialState: addressInitialState,
   reducers: {
     setCity: (state, action) => {
-      state.city = action.payload;
+      const city = action.payload;
+      if (state.cityOptions.includes(`${city}`)) {
+        state.city = city;
+      }
     },
     setCityOptions: (state, action) => {
       state.city = action.payload;

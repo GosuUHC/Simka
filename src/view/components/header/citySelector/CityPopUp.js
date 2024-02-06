@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
-import CityAutocomplete from "./CityAutocomplete";
+import CityTypeahead from "./CityTypeahead";
 
 const CityPopUp = ({ show, handleClose }) => {
   return (
@@ -16,11 +15,11 @@ const CityPopUp = ({ show, handleClose }) => {
       </Modal.Header>
 
       <Modal.Body>
-        <h4>City select</h4>
-        <CityAutocomplete />
+        <h4>Выбор города подключения</h4>
+        <CityTypeahead />
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleClose}>Close</Button>
+        <Button onClick={handleClose}>Закрыть</Button>
       </Modal.Footer>
     </Modal>
   );

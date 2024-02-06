@@ -11,9 +11,7 @@ const useAddress = () => {
   const { city, cityOptions, address } = useSelector((state) => state.address);
 
   const handleCityChange = (city) => {
-    if (cityOptions.includes(city)) {
-      dispatch(setCity(city));
-    }
+    dispatch(setCity(city));
   };
 
   const handleStreetChange = (street) => {
