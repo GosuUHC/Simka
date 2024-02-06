@@ -20,4 +20,5 @@ const RoomTypeSelect = ({ placeholder, onChange }) => {
   );
 };
 
+
 export default RoomTypeSelect;

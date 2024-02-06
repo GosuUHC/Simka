@@ -5,6 +5,7 @@ import Header from "./view/components/header/Header";
 import useFeedback from "./viewmodel/hooks/feedback/useFeedback";
 import { useGetProviderReviewsQuery } from "./transport/reviews";
 import Address from "./view/components/address/Address";
+import ProvidersPage from "./view/pages/providers/ProvidersPage";
 
 function App() {
   // const { data, error, isLoading } = useGetPromotionsQuery(); // promotions не работает
@@ -41,7 +42,7 @@ function App() {
   return (
     <>
       <Header />
-      <Address />
+      <ProvidersPage />
     </>
   );
 }

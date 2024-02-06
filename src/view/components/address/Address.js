@@ -3,6 +3,7 @@ import AddressField from "./AddressField";
 import { Col, Row } from "react-bootstrap";
 import RoomTypeSelect from "./RoomTypeSelect";
 import useAddress from "../../../viewmodel/hooks/address/useAddress";
+import Button from "react-bootstrap/Button";
 
 const Address = () => {
   const {
@@ -38,6 +39,9 @@ const Address = () => {
             placeholder={roomType ? roomType : "Тип помещения"}
             onChange={handleRoomTypeChange}
           />
+        </Col>
+        <Col>
+          <Button variant="secondary">Найти провайдеров</Button>
         </Col>
       </Row>
     </Container>
