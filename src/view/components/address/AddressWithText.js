@@ -1,22 +1,22 @@
-import { MDBTypography } from "mdb-react-ui-kit";
 import Address from "./Address";
+import Button from "react-bootstrap/Button";
 
 const AddressWithText = () => {
   return (
     <>
-      <MDBTypography variant="h4">
+      <h4>
         Поиск провайдеров домашнего интернета по адресу
-      </MDBTypography>
-      <MDBTypography>
+      </h4>
+      <p>
         Введите адрес и получите список доступных провайдеров и лучших тарифов
-      </MDBTypography>
+      </p>
       <Address />
-      <MDBTypography>
+      <p>
         Нажимая на кнопку «Найти провайдеров», я соглашаюсь с{" "}
-        <MDBTypography tag="a" href="#" color="secondary">
+        <Button as="a" bsPrefix="info">
           условиями обработки персональных данных
-        </MDBTypography>
-      </MDBTypography>
+        </Button>
+      </p>
     </>
   );
 };
