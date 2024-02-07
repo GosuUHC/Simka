@@ -1,8 +1,7 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import useAddress from "../../../viewmodel/hooks/address/useAddress";
-import { Heart, House } from "react-bootstrap-icons";
+import { Heart } from "react-bootstrap-icons";
 import CitySelector from "./citySelector/CitySelector";
 
 const UpperPart = () => {

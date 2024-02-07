@@ -4,7 +4,6 @@ import { useGetProvidersByIdQuery } from "./transport/providers";
 import Header from "./view/components/header/Header";
 import useFeedback from "./viewmodel/hooks/feedback/useFeedback";
 import { useGetProviderReviewsQuery } from "./transport/reviews";
-import Address from "./view/components/address/Address";
 import ProvidersPage from "./view/pages/providers/ProvidersPage";
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
 
   // console.log(isLoading ? "Loading..." : data);
 
-  const { data: reviews, isSuccess, error } = useGetProviderReviewsQuery(1);
+  const { data: reviews, isSuccess } = useGetProviderReviewsQuery(1);
 
   const { handleAddingFeedback } = useFeedback();
 
@@ -42,6 +41,7 @@ function App() {
   return (
     <>
       <Header />
+
       <ProvidersPage />
     </>
   );

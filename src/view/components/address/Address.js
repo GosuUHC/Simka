@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import AddressField from "./AddressField";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Stack } from "react-bootstrap";
 import RoomTypeSelect from "./RoomTypeSelect";
 import useAddress from "../../../viewmodel/hooks/address/useAddress";
 import Button from "react-bootstrap/Button";
@@ -17,7 +17,7 @@ const Address = () => {
 
   return (
     <Container>
-      <Row>
+      <Stack direction="horizontal" gap={3}>
         <Col>
           <AddressField
             desc={"Улица"}
@@ -26,7 +26,7 @@ const Address = () => {
             onChange={handleStreetChange}
           />
         </Col>
-        <Col>
+        <Col xs="auto">
           <AddressField
             desc={"Дом"}
             placeholder={"Номер дома"}
@@ -34,16 +34,16 @@ const Address = () => {
             onChange={handleBuildingNumberChange}
           />
         </Col>
-        <Col>
+        <Col xs="auto">
           <RoomTypeSelect
             placeholder={roomType ? roomType : "Тип помещения"}
             onChange={handleRoomTypeChange}
           />
         </Col>
-        <Col>
+        <Col xs="auto">
           <Button variant="secondary">Найти провайдеров</Button>
         </Col>
-      </Row>
+      </Stack>
     </Container>
   );
 };

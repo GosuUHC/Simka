@@ -10,6 +10,7 @@ const providersExtendedApi = api.injectEndpoints({
   endpoints: (build) => ({
     getProvidersSorted: build.query({
       query: (order) => `providers/?${order}`,
+      transformResponse: (response) => response.data,
     }),
     getProvidersById: build.query({
       query: (ids) => `providers/?${ids.map((id) => `id[]=${id}&`).join("")}`,
