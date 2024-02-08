@@ -9,7 +9,9 @@ export const availableSortingOptions = {
 const providersExtendedApi = api.injectEndpoints({
   endpoints: (build) => ({
     getProvidersSorted: build.query({
-      query: (order) => `providers/?${order}`,
+      query: (order) => {
+        return { url: `providers/`, params: { order } };
+      },
       transformResponse: (response) => response.data,
     }),
     getProvidersById: build.query({

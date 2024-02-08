@@ -7,12 +7,10 @@ import ProviderCardMiddlePart from "../../components/provider/ProviderCardMiddle
 import ProviderCardRightPart from "../../components/provider/ProviderCardRightPart";
 import { Stack } from "react-bootstrap";
 import useProviders from "../../../viewmodel/hooks/providers/useProviders";
-import useAddress from "../../../viewmodel/hooks/address/useAddress";
-import Button from "react-bootstrap/Button";
+import ProvidersSorting from "../../components/provider/ProvidersSorting";
 
 const ProvidersPage = () => {
   const { providersData, isSuccess } = useProviders();
-  const { city } = useAddress();
 
   if (!isSuccess) {
     return;
@@ -22,9 +20,10 @@ const ProvidersPage = () => {
     const rating = (
       <ProviderStarRating
         precision={0.1}
-        defaultValue={provider.rating_overall}
+        value={provider.rating_overall}
       />
     );
+
     const left = (
       <ProviderCardLeftPart
         imgSrc={provider.image}
@@ -32,6 +31,7 @@ const ProvidersPage = () => {
         component={rating}
       />
     );
+
     const middle = (
       <ProviderCardMiddlePart
         minPrice={provider.min_price}
@@ -42,12 +42,14 @@ const ProvidersPage = () => {
         reviewsCount={provider.reviews_count}
       />
     );
+
     const right = (
       <ProviderCardRightPart
         description={provider.description}
         phone={provider.phone}
       />
     );
+
     return (
       <ProviderCard key={i} components={[left, middle, right]}></ProviderCard>
     );
@@ -55,13 +57,11 @@ const ProvidersPage = () => {
 
   return (
     <Container>
-      <AddressWithText />
-      <h4>Провайдеры в г. {city}</h4>В вашем городе:{" "}
-      <Button variant="link" bsPrefix="info" as="a">
-        {city},
-      </Button>{" "}
-      найдено {providersData.length} провайдеров
-      <Stack gap={3}>{providersMapped}</Stack>
+      <Stack gap={2}>
+        <AddressWithText />
+        <ProvidersSorting />
+        <Stack gap={3}>{providersMapped}</Stack>
+      </Stack>
     </Container>
   );
 };

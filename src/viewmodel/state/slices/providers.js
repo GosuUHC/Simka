@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { availableSortingOptions } from "../../../transport/providers";
 
 const providersInitialState = {
+  sortBy: availableSortingOptions.POPULAR,
   filters: {
     services: [],
     specialOffers: [],
@@ -20,11 +22,14 @@ const providers = createSlice({
   name: "providers",
   initialState: providersInitialState,
   reducers: {
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
+    },
     setFilters: (state, action) => {
       state.filters = action.payload;
     },
   },
 });
 
-export const { setFilters } = providers.actions;
+export const { setSortBy, setFilters } = providers.actions;
 export const providersReducer = providers.reducer;

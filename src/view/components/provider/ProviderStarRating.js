@@ -1,22 +1,22 @@
 import { Box, Rating } from "@mui/material";
 
 const ProviderStarRating = ({
-  defaultValue,
+  value,
   precision,
   valuePositionOnLeft = true,
   readOnly = true,
 }) => {
   return (
     <Box display="flex" alignItems="center" lineHeight={0.7}>
-      {valuePositionOnLeft && <Box mr={0.5}>{defaultValue}</Box>}
+      {valuePositionOnLeft && <Box mr={0.5}>{value}</Box>}
       <Rating
         name="half-rating"
-        defaultValue={defaultValue}
+        value={value}
         precision={precision}
         readOnly={readOnly}
         color="secondary"
       ></Rating>
-      {!valuePositionOnLeft && <Box ml={0.5}>{defaultValue}</Box>}
+      {!valuePositionOnLeft && <Box ml={0.5}>{value}</Box>}
     </Box>
   );
 };
