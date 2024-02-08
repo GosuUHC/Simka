@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import useAddress from "../../../viewmodel/hooks/address/useAddress";
 import useProviders from "../../../viewmodel/hooks/providers/useProviders";
-import { Col, Stack } from "react-bootstrap";
+import { Col, Row, Stack } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { availableSortingOptions } from "../../../transport/providers";
 
@@ -10,18 +10,20 @@ const ProvidersSorting = () => {
   const { sortBy, providersData, handleSortByChange } = useProviders();
 
   return (
-    <Stack gap={1}>
+    <Row>
       <Col>
-        <h3>Провайдеры в г. {city}</h3>
+        <Col>
+          <h3>Провайдеры в г. {city}</h3>
+        </Col>
+        <Col className="pb-3">
+          В вашем городе:{" "}
+          <Button variant="link" bsPrefix="info" as="a">
+            {city},
+          </Button>{" "}
+          найдено {providersData.length} провайдеров
+        </Col>
       </Col>
-      <Col>
-        В вашем городе:{" "}
-        <Button variant="link" bsPrefix="info" as="a">
-          {city},
-        </Button>{" "}
-        найдено {providersData.length} провайдеров
-      </Col>
-      <Col className="ms-auto">
+      <Col xs="auto" className="ms-auto">
         <Form.Select
           defaultValue={sortBy}
           onChange={(e) => handleSortByChange(e.target.value)}
@@ -31,7 +33,7 @@ const ProvidersSorting = () => {
           <option value={availableSortingOptions.EXPENSIVE}>Дорогие</option>
         </Form.Select>
       </Col>
-    </Stack>
+    </Row>
   );
 };
 

@@ -15,7 +15,7 @@ const UpperPart = () => {
         <Nav>
           <Nav.Link>Поиск по адресу</Nav.Link>
           <Nav.Link>Обратный звонок</Nav.Link>
-          <Nav.Link>
+          <Nav.Link className="pe-0">
             <Heart />
             {` Избранное`}
           </Nav.Link>

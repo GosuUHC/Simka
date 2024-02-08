@@ -7,7 +7,7 @@ const ButtonWithBadge = ({ name, count, path }) => {
   };
 
   return (
-    <Button variant="light" onClick={onClick}>
+    <Button variant="light" size="lg" onClick={onClick}>
       {name} <Badge bg="secondary">{count}</Badge>
     </Button>
   );

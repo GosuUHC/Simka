@@ -16,35 +16,33 @@ const Address = () => {
   } = useAddress();
 
   return (
-    <Container>
-      <Stack direction="horizontal" gap={3}>
-        <Col>
-          <AddressField
-            desc={"Улица"}
-            placeholder={"Название улицы"}
-            defaultValue={street}
-            onChange={handleStreetChange}
-          />
-        </Col>
-        <Col xs="auto">
-          <AddressField
-            desc={"Дом"}
-            placeholder={"Номер дома"}
-            defaultValue={buildingNumber}
-            onChange={handleBuildingNumberChange}
-          />
-        </Col>
-        <Col xs="auto">
-          <RoomTypeSelect
-            placeholder={roomType ? roomType : "Тип помещения"}
-            onChange={handleRoomTypeChange}
-          />
-        </Col>
-        <Col xs="auto">
-          <Button variant="secondary">Найти провайдеров</Button>
-        </Col>
-      </Stack>
-    </Container>
+    <Stack direction="horizontal" gap={3}>
+      <Col>
+        <AddressField
+          desc={"Улица"}
+          placeholder={"Название улицы"}
+          defaultValue={street}
+          onChange={handleStreetChange}
+        />
+      </Col>
+      <Col xs="auto">
+        <AddressField
+          desc={"Дом"}
+          placeholder={"Номер дома"}
+          defaultValue={buildingNumber}
+          onChange={handleBuildingNumberChange}
+        />
+      </Col>
+      <Col xs="auto">
+        <RoomTypeSelect
+          placeholder={roomType ? roomType : "Тип помещения"}
+          onChange={handleRoomTypeChange}
+        />
+      </Col>
+      <Col xs="auto">
+        <Button variant="secondary">Найти провайдеров</Button>
+      </Col>
+    </Stack>
   );
 };
 

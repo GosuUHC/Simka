@@ -5,23 +5,28 @@ import ProviderCardLeftPart from "../../components/provider/ProviderCardLeftPart
 import ProviderCard from "../../components/provider/ProviderCard";
 import ProviderCardMiddlePart from "../../components/provider/ProviderCardMiddlePart";
 import ProviderCardRightPart from "../../components/provider/ProviderCardRightPart";
-import { Stack } from "react-bootstrap";
+import { Row, Stack } from "react-bootstrap";
 import useProviders from "../../../viewmodel/hooks/providers/useProviders";
 import ProvidersSorting from "../../components/provider/ProvidersSorting";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import { CaretDownFill } from "react-bootstrap-icons";
 
 const ProvidersPage = () => {
   const { providersData, isSuccess } = useProviders();
+  const [limit, setLimit] = useState(4);
+
+  const onShowMore = () => {
+    setLimit(limit + 3);
+  };
 
   if (!isSuccess) {
     return;
   }
 
-  const providersMapped = providersData.map((provider, i) => {
+  const providersMapped = providersData.slice(0, limit).map((provider, i) => {
     const rating = (
-      <ProviderStarRating
-        precision={0.1}
-        value={provider.rating_overall}
-      />
+      <ProviderStarRating precision={0.1} value={provider.rating_overall} />
     );
 
     const left = (
@@ -57,10 +62,17 @@ const ProvidersPage = () => {
 
   return (
     <Container>
-      <Stack gap={2}>
+      <Row className="py-5">
         <AddressWithText />
-        <ProvidersSorting />
-        <Stack gap={3}>{providersMapped}</Stack>
+      </Row>
+      <ProvidersSorting />
+      <Stack gap={3}>
+        {providersMapped}
+        {limit <= providersData.length && (
+          <Button as="div" bsPrefix="show" onClick={onShowMore}>
+            <CaretDownFill /> Показать больше
+          </Button>
+        )}
       </Stack>
     </Container>
   );
