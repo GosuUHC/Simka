@@ -16,7 +16,7 @@ const Address = () => {
   } = useAddress();
 
   return (
-    <Stack direction="horizontal" gap={3}>
+    <Stack className="pe-0" direction="horizontal" gap={3}>
       <Col>
         <AddressField
           desc={"Улица"}

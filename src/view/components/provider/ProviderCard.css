@@ -4,3 +4,13 @@
     display: inline;
 }
 
+.mainWrapper {
+    background-color: #e1e1e1;
+    padding-bottom: 5%;
+}
+
+.callBackInfoWrapper {
+    background-color: #f8f9fa;
+    padding-bottom: 5%;
+}
+

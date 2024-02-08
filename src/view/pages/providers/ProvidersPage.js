@@ -11,6 +11,7 @@ import ProvidersSorting from "../../components/provider/ProvidersSorting";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { CaretDownFill } from "react-bootstrap-icons";
+import CallBackInfoCard from "../../components/common/callBackInfoCard/CallBackInfoCard";
 
 const ProvidersPage = () => {
   const { providersData, isSuccess } = useProviders();
@@ -61,20 +62,27 @@ const ProvidersPage = () => {
   });
 
   return (
-    <Container>
-      <Row className="py-5">
-        <AddressWithText />
-      </Row>
-      <ProvidersSorting />
-      <Stack gap={3}>
-        {providersMapped}
-        {limit <= providersData.length && (
-          <Button as="div" bsPrefix="show" onClick={onShowMore}>
-            <CaretDownFill /> Показать больше
-          </Button>
-        )}
-      </Stack>
-    </Container>
+    <div className="mainWrapper">
+      <Container>
+        <Row className="py-5">
+          <AddressWithText />
+        </Row>
+        <ProvidersSorting />
+        <Stack gap={3} className="pb-3">
+          {providersMapped}
+          {limit <= providersData.length && (
+            <Button as="div" bsPrefix="show" onClick={onShowMore}>
+              <CaretDownFill /> Показать больше
+            </Button>
+          )}
+        </Stack>
+      </Container>
+      <div className="py-5 callBackInfoWrapper">
+        <Container>
+          <CallBackInfoCard />
+        </Container>
+      </div>
+    </div>
   );
 };
 
