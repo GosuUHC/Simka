@@ -9,7 +9,7 @@ const UpperPart = () => {
     <Navbar bg="light" data-bs-theme="light">
       <Container>
         <Nav>
-          <Navbar.Brand href="#home">SIMKA</Navbar.Brand>
+          <Navbar.Brand href="#home" className="text-uppercase">simka</Navbar.Brand>
           <CitySelector />
         </Nav>
         <Nav>

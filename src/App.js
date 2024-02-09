@@ -1,16 +1,20 @@
 import Header from "./view/components/header/Header";
-import useFeedback from "./viewmodel/hooks/feedback/useFeedback";
 import ProvidersPage from "./view/pages/providers/ProvidersPage";
+import Footer from "./view/components/footer/Footer";
 
 function App() {
-  // const { data, error, isLoading } = useGetPromotionsQuery(); // promotions не работает
-  // const { data, error, isLoading } = useGetProvidersSortedQuery("cheap");
-  // const { data, error, isLoading } = useGetProvidersByIdQuery([1, 2]);
-  // const { data, error, isLoading } = useGetPlansQuery({
+  // const { data, error, isSuccess } = useGetPromotionsQuery(); // promotions не работает
+  // const { data, error, isSuccess } = useGetProvidersSortedQuery("cheap");
+  // const { data, error, isSuccess } = useGetProvidersByIdQuery([1, 2]);
+  // const { data, error, isSuccess } = useGetPlansQuery({
   //   provider_id: [1, 2],
   // });
 
-  // const { data, error, isLoading } = useGetCompilationsQuery(); // compilations не работает
+  // const { data, isSuccess } = useGetCompilationsQuery();
+  //
+  // if (isSuccess) {
+  //   console.log(data);
+  // }
 
   // Outlet
 
@@ -18,7 +22,7 @@ function App() {
     <>
       <Header />
       <ProvidersPage />
-
+      <Footer />
     </>
   );
 }

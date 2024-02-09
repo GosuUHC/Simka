@@ -15,7 +15,7 @@ import CallBackInfoCard from "../../components/common/callBackInfoCard/CallBackI
 
 const ProvidersPage = () => {
   const { providersData, isSuccess } = useProviders();
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(3);
 
   const onShowMore = () => {
     setLimit(limit + 3);
@@ -70,7 +70,7 @@ const ProvidersPage = () => {
         <ProvidersSorting />
         <Stack gap={3} className="pb-3">
           {providersMapped}
-          {limit <= providersData.length && (
+          {limit < providersData.length && (
             <Button as="div" bsPrefix="show" onClick={onShowMore}>
               <CaretDownFill /> Показать больше
             </Button>

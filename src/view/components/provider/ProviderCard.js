@@ -3,7 +3,7 @@ import { Fragment } from "react";
 
 const ProviderCard = ({ components }) => {
   return (
-    <Card body>
+    <Card className="border-0" body>
       <Stack direction="horizontal" gap={3}>
         {components.map((component, i) => {
           return (

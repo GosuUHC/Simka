@@ -1,4 +1,4 @@
-import { Col, Stack } from "react-bootstrap";
+import { Col, Row, Stack } from "react-bootstrap";
 import ButtonWithBadge from "./ButtonWithBadge";
 import "./ProviderCard.css";
 
@@ -11,8 +11,8 @@ const ProviderCardMiddlePart = ({
   promotionsCount,
 }) => {
   return (
-    <Col xs>
-      <Stack gap={5}>
+    <Col className="d-flex flex-column align-self-stretch">
+      <Row className="mb-auto">
         <Stack direction="horizontal" gap={2}>
           <span>
             от <div className="numberTag">{minPrice}</div> руб./мес.
@@ -21,12 +21,14 @@ const ProviderCardMiddlePart = ({
             до <div className="numberTag">{maxSpeed}</div> {maxSpeedUnits}
           </span>
         </Stack>
-        <Stack className="align-bottom" direction="horizontal" gap={2}>
+      </Row>
+      <Row>
+        <Stack direction="horizontal" gap={3}>
           <ButtonWithBadge name={"Тарифы"} count={plansCount} />
           <ButtonWithBadge name={"Акции"} count={reviewsCount} />
           <ButtonWithBadge name={"Отзывы"} count={promotionsCount} />
         </Stack>
-      </Stack>
+      </Row>
     </Col>
   );
 };

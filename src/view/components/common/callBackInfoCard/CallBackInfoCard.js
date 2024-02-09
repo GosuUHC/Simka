@@ -10,7 +10,7 @@ const CallBackInfoCard = () => {
   const phone = "8-000-000-0000";
 
   return (
-    <Card className="p-4">
+    <Card className="p-3">
       <Card.Body>
         <Col xs="auto">
           <Card.Title as="h3">Остались вопросы? </Card.Title>
@@ -20,17 +20,17 @@ const CallBackInfoCard = () => {
               удобное для вас время
             </span>
           </Card.Text>
-          <Button variant="secondary">Оставить заявку</Button>
-          <Card.Text>
+          <Button variant="secondary" size="lg">Оставить заявку</Button>
+          <Card.Text className="pt-4">
             <span className="text-muted">
               Или свяжитесь с нами удобным для вас способом
             </span>
-            <CallBackLinks
-              onClickTg={onClickTg}
-              onClickVk={onClickVk}
-              phone={phone}
-            />
           </Card.Text>
+          <CallBackLinks
+            onClickTg={onClickTg}
+            onClickVk={onClickVk}
+            phone={phone}
+          />
         </Col>
       </Card.Body>
     </Card>

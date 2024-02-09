@@ -10,7 +10,7 @@ const providersExtendedApi = api.injectEndpoints({
   endpoints: (build) => ({
     getProvidersSorted: build.query({
       query: (order) => {
-        return { url: `providers/`, params: { order } };
+        return { url: `providers`, params: { order } };
       },
       transformResponse: (response) => response.data,
     }),
