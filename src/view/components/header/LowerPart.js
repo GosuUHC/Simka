@@ -11,7 +11,7 @@ const LowerPart = () => {
   const onClickProviders = () => navigate(PATH.providers);
 
   return (
-    <Navbar bg="light" data-bs-theme="light">
+    <Navbar>
       <Container>
         <Nav>
           <Nav.Link

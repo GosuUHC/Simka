@@ -1,16 +1,11 @@
 .numberTag {
-    font-weight: bold;
-    font-size: 2.2rem;
-    display: inline;
+  font-weight: bold;
+  font-size: 2.2rem;
+  display: inline;
 }
 
 .mainWrapper {
-    background-color: #e1e1e1;
-    padding-bottom: 5%;
+  background-color: #f2f2f2;
 }
 
-.callBackInfoWrapper {
-    background-color: #f8f9fa;
-    padding-bottom: 5%;
-}
 

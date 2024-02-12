@@ -5,3 +5,7 @@
 .noLeftPaddingBtn {
   padding-left: 0 !important;
 }
+
+.headerWrapper {
+  background-color: #ffffff !important;
+}

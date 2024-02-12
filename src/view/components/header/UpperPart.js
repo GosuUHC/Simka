@@ -12,10 +12,14 @@ const UpperPart = () => {
   const onClickMain = () => navigate(PATH.main);
 
   return (
-    <Navbar bg="light" data-bs-theme="light">
+    <Navbar>
       <Container>
         <Nav>
-          <Navbar.Brand className="text-uppercase" href="#" onClick={onClickMain}>
+          <Navbar.Brand
+            className="text-uppercase"
+            style={{ cursor: "pointer" }}
+            onClick={onClickMain}
+          >
             simka
           </Navbar.Brand>
           <CitySelector />

@@ -11,7 +11,7 @@ const CallBackInfoCard = () => {
   const { phone } = usePhones();
 
   return (
-    <Card className="p-3">
+    <Card className="p-3 callBackInfoCardWrapper border-0" >
       <Card.Body>
         <Row>
           <Col>
