@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Stack } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegram, faVk } from "@fortawesome/free-brands-svg-icons";
 import useSocialLinks from "../../../viewmodel/hooks/common/useSocialLinks";
@@ -40,14 +40,16 @@ const Footer = () => {
               <span>Блог</span>
             </Col>
 
-            <Col className="d-flex justify-content-end" >
-              <span className="text-muted">Мы онлайн с 8:00-20:00</span>
-              <FontAwesomeIcon
-                size={"xl"}
-                icon={faTelegram}
-                onClick={onClickTg}
-              />
-              <FontAwesomeIcon size={"xl"} icon={faVk} onClick={onClickVk} />
+            <Col className="d-flex justify-content-end">
+              <Stack direction="horizontal" gap={2}>
+                <span className="text-muted">Мы онлайн с 8:00-20:00</span>
+                <FontAwesomeIcon
+                  size={"xl"}
+                  icon={faTelegram}
+                  onClick={onClickTg}
+                />
+                <FontAwesomeIcon size={"xl"} icon={faVk} onClick={onClickVk} />
+              </Stack>
             </Col>
           </Row>
         </Container>
