@@ -3,13 +3,21 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Heart } from "react-bootstrap-icons";
 import CitySelector from "./citySelector/CitySelector";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../../consts";
 
 const UpperPart = () => {
+  const navigate = useNavigate();
+
+  const onClickMain = () => navigate(PATH.main);
+
   return (
     <Navbar bg="light" data-bs-theme="light">
       <Container>
         <Nav>
-          <Navbar.Brand href="#home" className="text-uppercase">simka</Navbar.Brand>
+          <Navbar.Brand className="text-uppercase" href="#" onClick={onClickMain}>
+            simka
+          </Navbar.Brand>
           <CitySelector />
         </Nav>
         <Nav>

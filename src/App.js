@@ -1,14 +1,12 @@
 import Header from "./view/components/header/Header";
 import Footer from "./view/components/footer/Footer";
-import MainPage from "./view/pages/main/MainPage";
+import Router from "./Router";
 
 function App() {
-
-
   return (
     <>
       <Header />
-      <MainPage />
+      <Router />
       <Footer />
     </>
   );
