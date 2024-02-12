@@ -9,7 +9,7 @@ import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { CaretDownFill } from "react-bootstrap-icons";
 
-const ProvidersTable = () => {
+const ProvidersList = () => {
   const { providersData, isSuccess } = useProviders();
   const [limit, setLimit] = useState(3);
 
@@ -67,4 +67,4 @@ const ProvidersTable = () => {
   );
 };
 
-export default ProvidersTable;
+export default ProvidersList;
