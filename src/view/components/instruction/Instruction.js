@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import StepperCard from "./StepperCard";
+import StepperCard from "./stepper/StepperCard";
 import CallBackLinks from "../common/callBackInfoCard/CallBackLinks";
 import usePhones from "../../../viewmodel/hooks/common/usePhones";
 import useSocialLinks from "../../../viewmodel/hooks/common/useSocialLinks";
@@ -9,8 +9,9 @@ const Instruction = () => {
   const { onClickTg, onClickVk } = useSocialLinks();
 
   return (
-    <Card className="border-0 py-2">
+    <Card className="border-0 py-4">
       <Card.Title as="h3">Как подключить интернет</Card.Title>
+
       <Card.Text>
         Подключить домашний интернет просто. Следуйте нашей инструкции
       </Card.Text>

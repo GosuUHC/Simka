@@ -1,7 +1,13 @@
 import { useRoutes } from "react-router-dom";
-import MainPage from "./view/pages/main/MainPage";
 import { PATH } from "./consts";
-import ProvidersPage from "./view/pages/providers/ProvidersPage";
+import { lazy, Suspense } from "react";
+
+const MainPage = lazy(() =>
+  import("./view/pages/main/MainPage").then((comp) => comp),
+);
+const ProvidersPage = lazy(() =>
+  import("./view/pages/providers/ProvidersPage").then((comp) => comp),
+);
 
 const Router = () => {
   return useRoutes([
