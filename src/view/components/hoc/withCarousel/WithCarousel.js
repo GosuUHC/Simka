@@ -1,13 +1,15 @@
 import { useRef, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Col, Row } from "react-bootstrap";
-import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+import {
+  ChevronLeft,
+  ChevronRight,
+} from "react-bootstrap-icons";
 import "./WithCarousel.css";
 
 const WithCarousel = ({ componentsList, itemsPerPage }) => {
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
-  const pagesCount = componentsList.length / itemsPerPage;
 
   const handleSelect = (selectedIndex) => {
     console.log(selectedIndex);
@@ -39,11 +41,12 @@ const WithCarousel = ({ componentsList, itemsPerPage }) => {
         activeIndex={index}
         onSelect={handleSelect}
         ref={ref}
+        indicators={true}
         interval={null}
       >
         {renderComponents}
       </Carousel>
-      <Row className="justify-content-end px-0">
+      <Row className="d-flex justify-content-end px-0">
         <Col xs="auto px-0" onClick={handlePrev}>
           <ChevronLeft className="controlIcon " />
         </Col>
