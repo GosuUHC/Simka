@@ -42,6 +42,7 @@ const WithCarousel = ({ componentsList, itemsPerPage }) => {
         onSelect={handleSelect}
         ref={ref}
         indicators={true}
+        controls={false}
         interval={null}
       >
         {renderComponents}

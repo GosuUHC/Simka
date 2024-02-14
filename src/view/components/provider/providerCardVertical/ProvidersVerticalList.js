@@ -29,7 +29,7 @@ const ProvidersVerticalList = () => {
     );
 
     return (
-      <Col className="d-flex align-self-stretch" key={i} xs={12} sm={6} md={4} lg={3}>
+      <Col className="d-flex align-self-stretch " key={i} xs={12} sm={6} md={4} lg={3}>
         <ProviderCardVertical key={i} components={[upper, bottom]} />
       </Col>
     );
