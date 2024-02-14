@@ -4,15 +4,12 @@ import ProviderCardVerticalBottomPart from "./ProviderCardVerticalBottomPart";
 import ProviderCardVertical from "./ProviderCardVertical";
 import { Col, Stack } from "react-bootstrap";
 import ProviderCardVerticalPlaceholder from "./ProviderCardVerticalPlaceholder";
+import WithCarousel from "../../hoc/withCarousel/WithCarousel";
 
 const ProvidersVerticalList = () => {
-  const { providersData, isSuccess } = useProviders();
+  const { providersData } = useProviders();
 
-  if (!isSuccess) {
-    return;
-  }
-
-  const providersMapped = providersData.slice(0, 3).map((provider, i) => {
+  const providersMapped = providersData.map((provider, i) => {
     const upper = (
       <ProviderCardVerticalUpperPart
         imgSrc={provider.image}
@@ -32,10 +29,19 @@ const ProvidersVerticalList = () => {
     );
 
     return (
-      <Col key={i} xs={12} sm={6} md={4} lg={3}>
+      <Col className="d-flex align-self-stretch" key={i} xs={12} sm={6} md={4} lg={3}>
         <ProviderCardVertical key={i} components={[upper, bottom]} />
       </Col>
     );
+  });
+
+  const providersMappedAppended = [<ProviderCardVerticalPlaceholder />].concat(
+    providersMapped,
+  );
+
+  const providersWithCarousel = WithCarousel({
+    componentsList: providersMappedAppended,
+    itemsPerPage: 4,
   });
 
   return (
@@ -44,8 +50,7 @@ const ProvidersVerticalList = () => {
       direction="horizontal"
       gap={3}
     >
-      <ProviderCardVerticalPlaceholder />
-      {providersMapped}
+      {providersWithCarousel}
     </Stack>
   );
 };
