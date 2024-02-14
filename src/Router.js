@@ -12,11 +12,19 @@ const ProvidersPage = lazy(() =>
 const Router = () => {
   return useRoutes([
     {
-      element: <MainPage />,
+      element: (
+        <Suspense>
+          <MainPage />
+        </Suspense>
+      ),
       path: PATH.main,
     },
     {
-      element: <ProvidersPage />,
+      element: (
+        <Suspense>
+          <ProvidersPage />
+        </Suspense>
+      ),
       path: PATH.providers,
     },
   ]);

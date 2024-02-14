@@ -1,7 +1,7 @@
 import { Col, Row, Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
-const ProviderCardRightPart = ({ description, phone }) => {
+const ProviderCardHorizontalRightPart = ({ description, phone }) => {
   return (
     <Col className="d-flex flex-column align-self-stretch pt-2">
       <Row className="mb-auto">
@@ -24,4 +24,4 @@ const ProviderCardRightPart = ({ description, phone }) => {
   );
 };
 
-export default ProviderCardRightPart;
+export default ProviderCardHorizontalRightPart;

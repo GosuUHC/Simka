@@ -7,6 +7,7 @@ import Compilations from "../../components/compilations/Compilations";
 import Instruction from "../../components/instruction/Instruction";
 import FAQsCard from "../../components/faq/FAQsCard";
 import CallBackInfoCard from "../../components/common/callBackInfoCard/CallBackInfoCard";
+import ProvidersVerticalList from "../../components/provider/providerCardVertical/ProvidersVerticalList";
 
 const MainPage = () => {
   return (
@@ -17,6 +18,9 @@ const MainPage = () => {
             <AddressWithText />
           </Row>
           <AdvantagesList />
+          <div>
+            <ProvidersVerticalList />
+          </div>
         </Container>
       </div>
       <div className="py-5">

@@ -1,15 +1,15 @@
-import useProviders from "../../../viewmodel/hooks/providers/useProviders";
+import useProviders from "../../../../viewmodel/hooks/providers/useProviders";
 import { useState } from "react";
-import ProviderStarRating from "./ProviderStarRating";
-import ProviderCardLeftPart from "./ProviderCardLeftPart";
-import ProviderCardMiddlePart from "./ProviderCardMiddlePart";
-import ProviderCardRightPart from "./ProviderCardRightPart";
-import ProviderCard from "./ProviderCard";
+import ProviderStarRating from "../ProviderStarRating";
+import ProviderCardHorizontalLeftPart from "./ProviderCardHorizontalLeftPart";
+import ProviderCardHorizontalMiddlePart from "./ProviderCardHorizontalMiddlePart";
+import ProviderCardHorizontalRightPart from "./ProviderCardHorizontalRightPart";
+import ProviderCardHorizontal from "./ProviderCardHorizontal";
 import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { CaretDownFill } from "react-bootstrap-icons";
 
-const ProvidersList = () => {
+const ProvidersHorizontalList = () => {
   const { providersData, isSuccess } = useProviders();
   const [limit, setLimit] = useState(3);
 
@@ -27,7 +27,7 @@ const ProvidersList = () => {
     );
 
     const left = (
-      <ProviderCardLeftPart
+      <ProviderCardHorizontalLeftPart
         imgSrc={provider.image}
         name={provider.name}
         component={rating}
@@ -35,7 +35,7 @@ const ProvidersList = () => {
     );
 
     const middle = (
-      <ProviderCardMiddlePart
+      <ProviderCardHorizontalMiddlePart
         minPrice={provider.min_price}
         maxSpeed={provider.max_internet_speed_value}
         maxSpeedUnits={provider.max_internet_speed_units}
@@ -46,13 +46,13 @@ const ProvidersList = () => {
     );
 
     const right = (
-      <ProviderCardRightPart
+      <ProviderCardHorizontalRightPart
         description={provider.description}
         phone={provider.phone}
       />
     );
 
-    return <ProviderCard key={i} components={[left, middle, right]} />;
+    return <ProviderCardHorizontal key={i} components={[left, middle, right]} />;
   });
 
   return (
@@ -67,4 +67,4 @@ const ProvidersList = () => {
   );
 };
 
-export default ProvidersList;
+export default ProvidersHorizontalList;

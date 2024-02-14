@@ -1,6 +1,7 @@
 import { Card, Col, Row } from "react-bootstrap";
 import useFaq from "../../../viewmodel/hooks/faq/useFaq";
 import FAQCard from "./FAQCard";
+import withCarousel from "../hoc/withCarousel/WithCarousel";
 
 const FAQsCard = () => {
   const { faqData } = useFaq();
@@ -13,11 +14,16 @@ const FAQsCard = () => {
     );
   });
 
+  const faqDataWithCarousel = withCarousel({
+    componentsList: faqDataMapped,
+    itemsPerPage: 4,
+  });
+
   return (
     <Card className="border-0 ps-0">
       <Card.Body className="px-0">
         <Card.Title as="h2">Часто задаваемые вопросы</Card.Title>
-        <Row md={4}>{faqDataMapped}</Row>
+        <Row md={4}>{faqDataWithCarousel}</Row>
       </Card.Body>
     </Card>
   );

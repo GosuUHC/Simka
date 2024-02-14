@@ -3,7 +3,7 @@ import AddressWithText from "../../components/address/AddressWithText";
 import { Row } from "react-bootstrap";
 import ProvidersSorting from "../../components/provider/ProvidersSorting";
 import CallBackInfoCard from "../../components/common/callBackInfoCard/CallBackInfoCard";
-import ProvidersList from "../../components/provider/ProvidersList";
+import ProvidersHorizontalList from "../../components/provider/providerCardHorizontal/ProvidersHorizontalList";
 import { memo } from "react";
 
 const ProvidersPage = () => {
@@ -14,7 +14,7 @@ const ProvidersPage = () => {
           <AddressWithText />
         </Row>
         <ProvidersSorting />
-        <ProvidersList />
+        <ProvidersHorizontalList />
       </Container>
       <div className="py-5 callBackInfoWrapper">
         <Container>

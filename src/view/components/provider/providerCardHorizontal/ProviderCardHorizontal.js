@@ -1,7 +1,7 @@
 import { Card, Stack } from "react-bootstrap";
 import { Fragment } from "react";
 
-const ProviderCard = ({ components }) => {
+const ProviderCardHorizontal = ({ components }) => {
   return (
     <Card className="border-0" body>
       <Stack direction="horizontal" gap={3}>
@@ -18,4 +18,4 @@ const ProviderCard = ({ components }) => {
   );
 };
 
-export default ProviderCard;
+export default ProviderCardHorizontal;

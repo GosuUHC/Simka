@@ -25,3 +25,16 @@ code {
 .show-primary:hover {
   color: grey;
 }
+
+.mainWrapper {
+  background-color: #f2f2f2;
+}
+
+.numberTag {
+  font-weight: bold;
+  font-size: 2.2rem;
+  display: inline;
+}
+
+
+
