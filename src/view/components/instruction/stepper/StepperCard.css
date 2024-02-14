@@ -16,7 +16,7 @@
   width: 50% !important;
 }
 
-::after {
+.MuiStepper-horizontal .css-zplcjf-JoyStep-root::after {
   width: 35% !important;
   margin-left: 30% !important;
   background-color: transparent !important;

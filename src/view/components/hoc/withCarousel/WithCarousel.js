@@ -1,74 +1,57 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Col, Row } from "react-bootstrap";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+import "./WithCarousel.css";
 
 const WithCarousel = ({ componentsList, itemsPerPage }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const totalComponents = componentsList.flat().length;
-  const totalPages = Math.ceil(totalComponents / itemsPerPage);
+  const [index, setIndex] = useState(0);
+  const ref = useRef(null);
+  const pagesCount = componentsList.length / itemsPerPage;
 
-  const handleSelect = (selectedIndex, e) => {
-    setActiveIndex(selectedIndex);
+  const handleSelect = (selectedIndex) => {
+    console.log(selectedIndex);
+    setIndex(selectedIndex);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? totalPages - 1 : prevIndex - 1,
-    );
+    ref.current.prev();
   };
 
   const handleNext = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === totalPages - 1 ? 0 : prevIndex + 1,
-    );
+    ref.current.next();
   };
 
-  const renderIndicators = () => {
-    return Array.from({ length: totalPages }, (_, index) => (
-      <span
-        key={index}
-        className={`carousel-indicator ${
-          activeIndex === index ? "active" : ""
-        }`}
-        onClick={() => setActiveIndex(index)}
-      ></span>
-    ));
-  };
+  const chunkedComponents = [];
+  for (let i = 0; i < componentsList.length; i += itemsPerPage) {
+    chunkedComponents.push(componentsList.slice(i, i + itemsPerPage));
+  }
 
-  const renderComponents = () => {
-    const startIndex = activeIndex * itemsPerPage;
-    const endIndex = Math.min(
-      (activeIndex + 1) * itemsPerPage,
-      totalComponents,
-    );
-
-    return componentsList
-      .flat()
-      .slice(startIndex, endIndex)
-      .map((component, index) => (
-        <Carousel.Item key={index}>{component}</Carousel.Item>
-      ));
-  };
+  const renderComponents = chunkedComponents.map((chunk, i) => (
+    <Carousel.Item key={i}>
+      <Row>{chunk}</Row>
+    </Carousel.Item>
+  ));
 
   return (
-    <div className="carousel-container">
+    <Row>
       <Carousel
-        indicators={false}
-        activeIndex={activeIndex}
+        activeIndex={index}
         onSelect={handleSelect}
+        ref={ref}
+        interval={null}
       >
-        {renderComponents()}
+        {renderComponents}
       </Carousel>
-      <div className="carousel-controls">
-        <span className="control" onClick={handlePrev}>
-          &lt;
-        </span>
-        <span className="control" onClick={handleNext}>
-          &gt;
-        </span>
-      </div>
-      {renderIndicators()}
-    </div>
+      <Row className="justify-content-end px-0">
+        <Col xs="auto px-0" onClick={handlePrev}>
+          <ChevronLeft className="controlIcon " />
+        </Col>
+        <Col xs="auto px-0" onClick={handleNext}>
+          <ChevronRight className="controlIcon" />
+        </Col>
+      </Row>
+    </Row>
   );
 };
-
 export default WithCarousel;

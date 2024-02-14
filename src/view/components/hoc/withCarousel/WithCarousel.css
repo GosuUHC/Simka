@@ -1,0 +1,12 @@
+
+.controlIcon {
+  font-size: 2rem;
+  color: #acacac;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.controlIcon:hover {
+  color: #808080;
+  cursor: pointer;
+}

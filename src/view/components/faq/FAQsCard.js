@@ -23,7 +23,7 @@ const FAQsCard = () => {
     <Card className="border-0 ps-0">
       <Card.Body className="px-0">
         <Card.Title as="h2">Часто задаваемые вопросы</Card.Title>
-        <Row md={4}>{faqDataWithCarousel}</Row>
+        <Row>{faqDataWithCarousel}</Row>
       </Card.Body>
     </Card>
   );

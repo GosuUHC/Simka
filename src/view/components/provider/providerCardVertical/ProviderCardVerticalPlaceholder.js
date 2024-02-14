@@ -1,4 +1,4 @@
-import { Card, Col, Row, Stack } from "react-bootstrap";
+import { Card, Col, Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import usePhones from "../../../../viewmodel/hooks/common/usePhones";
 
@@ -9,7 +9,7 @@ const ProviderCardVerticalPlaceholder = () => {
     <Col xs={12} sm={6} md={4} lg={3} className="d-flex align-self-stretch">
       <Card className="border-0 d-flex">
         <Card.Body className="d-flex flex-column">
-          <Card.Title as="h3" className="text-uppercase">
+          <Card.Title as="h2" className="text-uppercase py-3">
             simka
           </Card.Title>
 
