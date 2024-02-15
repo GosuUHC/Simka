@@ -10,7 +10,7 @@ const ProviderCardHorizontalMiddlePart = ({
   promotionsCount,
 }) => {
   return (
-    <Col className="d-flex flex-column align-self-stretch">
+    <Col className="d-flex flex-column align-self-stretch border-end">
       <Row className="mb-auto">
         <Stack direction="horizontal" gap={2}>
           <span>
