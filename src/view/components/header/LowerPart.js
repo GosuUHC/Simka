@@ -11,21 +11,26 @@ const LowerPart = () => {
   const onClickProviders = () => navigate(PATH.providers);
 
   return (
-    <Navbar>
+    <Navbar expand="lg">
       <Container>
-        <Nav>
-          <Nav.Link
-            className={styles.noLeftPaddingBtn}
-            onClick={onClickProviders}
-          >
-            Провайдеры
-          </Nav.Link>
-          <Nav.Link>Рейтинг</Nav.Link>
+        <Navbar.Toggle className="ms-auto" aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse  id="responsive-navbar-nav">
+          <Nav>
+            <Nav.Link
+              className={styles.noLeftPaddingBtn}
+              onClick={onClickProviders}
+            >
+              Провайдеры
+            </Nav.Link>
+            <Nav.Link>Рейтинг</Nav.Link>
 
-          <Nav.Link>Тарифы</Nav.Link>
-          <Nav.Link>Акции</Nav.Link>
-        </Nav>
-        <Nav.Item className={styles.noLeftPaddingBtn}>8-000-000-0000</Nav.Item>
+            <Nav.Link>Тарифы</Nav.Link>
+            <Nav.Link>Акции</Nav.Link>
+          </Nav>
+          <Nav.Item className={styles.noLeftPaddingPhone}>
+            8-000-000-0000
+          </Nav.Item>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

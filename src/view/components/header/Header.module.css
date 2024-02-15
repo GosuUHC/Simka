@@ -6,6 +6,11 @@
   padding-left: 0 !important;
 }
 
+.noLeftPaddingPhone {
+  margin-left: auto;
+  padding-left: 0 !important;
+}
+
 .headerWrapper {
   background-color: #ffffff !important;
 }

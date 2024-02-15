@@ -12,26 +12,29 @@ const UpperPart = () => {
   const onClickMain = () => navigate(PATH.main);
 
   return (
-    <Navbar>
+    <Navbar expand="lg">
       <Container>
-        <Nav>
-          <Navbar.Brand
-            className="text-uppercase"
-            style={{ cursor: "pointer" }}
-            onClick={onClickMain}
-          >
-            simka
-          </Navbar.Brand>
-          <CitySelector />
-        </Nav>
-        <Nav>
-          <Nav.Link>Поиск по адресу</Nav.Link>
-          <Nav.Link>Обратный звонок</Nav.Link>
-          <Nav.Link className="pe-0">
-            <Heart />
-            {` Избранное`}
-          </Nav.Link>
-        </Nav>
+        <Navbar.Brand
+          className="text-uppercase"
+          style={{ cursor: "pointer" }}
+          onClick={onClickMain}
+        >
+          simka
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav>
+            <CitySelector />
+          </Nav>
+          <Nav>
+            <Nav.Link>Поиск по адресу</Nav.Link>
+            <Nav.Link>Обратный звонок</Nav.Link>
+            <Nav.Link className="pe-0">
+              <Heart />
+              {` Избранное`}
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
