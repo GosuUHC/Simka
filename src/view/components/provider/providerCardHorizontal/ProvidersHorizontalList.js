@@ -8,10 +8,14 @@ import ProviderCardHorizontal from "./ProviderCardHorizontal";
 import { Stack } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { CaretDownFill } from "react-bootstrap-icons";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ProviderCardVertical from "../providerCardVertical/ProviderCardVertical";
 
 const ProvidersHorizontalList = () => {
   const { providersData, isSuccess } = useProviders();
   const [limit, setLimit] = useState(3);
+
+  const vertical = useMediaQuery("(max-width:1000px)");
 
   if (!isSuccess) {
     return;
@@ -52,7 +56,11 @@ const ProvidersHorizontalList = () => {
       />
     );
 
-    return <ProviderCardHorizontal key={i} components={[left, middle, right]} />;
+    return vertical ? (
+      <ProviderCardVertical key={i} components={[left, middle, right]} />
+    ) : (
+      <ProviderCardHorizontal key={i} components={[left, middle, right]} />
+    );
   });
 
   return (
