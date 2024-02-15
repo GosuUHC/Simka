@@ -9,18 +9,13 @@ const Compilations = () => {
     return;
   }
 
-  const compilationsMapped = compilationsData
-    .slice(0, 2)
-    .map((compilation, i) => {
-      return (
-        <Col key={i}>
-          <CompilationCard
-            imgSrc={compilation.image}
-            title={compilation.name}
-          />
-        </Col>
-      );
-    });
+  const compilationsMapped = compilationsData.map((compilation, i) => {
+    return (
+      <Col key={i}>
+        <CompilationCard imgSrc={compilation.image} title={compilation.name} />
+      </Col>
+    );
+  });
 
   return (
     <div className="py-4">

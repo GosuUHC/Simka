@@ -12,7 +12,6 @@ const WithCarousel = ({ componentsList, itemsPerPage }) => {
   const ref = useRef(null);
 
   const handleSelect = (selectedIndex) => {
-    console.log(selectedIndex);
     setIndex(selectedIndex);
   };
 
