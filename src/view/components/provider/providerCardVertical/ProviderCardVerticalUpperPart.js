@@ -17,7 +17,7 @@ const ProviderCardVerticalUpperPart = ({
         rating={rating}
         isRecommended={isRecommended}
       />
-      <span className="text-muted text-wrap">{desc}</span>
+      <span className="text-muted text-wrap mb-auto">{desc}</span>
     </Stack>
   );
 };

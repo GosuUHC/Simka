@@ -11,7 +11,7 @@ const Compilations = () => {
 
   const compilationsMapped = compilationsData.map((compilation, i) => {
     return (
-      <Col key={i}>
+      <Col key={i} xs={8} md={6}>
         <CompilationCard imgSrc={compilation.image} title={compilation.name} />
       </Col>
     );

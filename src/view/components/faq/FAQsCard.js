@@ -8,7 +8,7 @@ const FAQsCard = () => {
 
   const faqDataMapped = faqData.map((data, i) => {
     return (
-      <Col key={i} className="d-flex py-4 align-self-stretch">
+      <Col key={i} xs={8} md={6} lg={3} className="d-flex py-4 align-self-stretch">
         <FAQCard title={data.title} desc={data.desc} />
       </Col>
     );

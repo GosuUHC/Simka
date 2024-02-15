@@ -11,7 +11,7 @@ const LowerPart = () => {
   const onClickProviders = () => navigate(PATH.providers);
 
   return (
-    <Navbar expand="lg">
+    <Navbar expand="md">
       <Container>
         <Navbar.Toggle className="ms-auto" aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse  id="responsive-navbar-nav">

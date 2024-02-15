@@ -12,7 +12,7 @@ const UpperPart = () => {
   const onClickMain = () => navigate(PATH.main);
 
   return (
-    <Navbar expand="lg">
+    <Navbar expand="md">
       <Container>
         <Navbar.Brand
           className="text-uppercase"
@@ -26,7 +26,7 @@ const UpperPart = () => {
           <Nav>
             <CitySelector />
           </Nav>
-          <Nav>
+          <Nav className="ms-auto">
             <Nav.Link>Поиск по адресу</Nav.Link>
             <Nav.Link>Обратный звонок</Nav.Link>
             <Nav.Link className="pe-0">
