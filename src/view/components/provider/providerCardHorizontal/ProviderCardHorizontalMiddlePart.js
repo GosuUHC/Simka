@@ -1,8 +1,7 @@
 import { Col, Row, Stack } from "react-bootstrap";
-import ButtonWithBadge from "./ButtonWithBadge";
-import "./ProviderCard.css";
+import ButtonWithBadge from "../ButtonWithBadge";
 
-const ProviderCardMiddlePart = ({
+const ProviderCardHorizontalMiddlePart = ({
   minPrice,
   maxSpeed,
   maxSpeedUnits,
@@ -33,4 +32,4 @@ const ProviderCardMiddlePart = ({
   );
 };
 
-export default ProviderCardMiddlePart;
+export default ProviderCardHorizontalMiddlePart;

@@ -1,10 +1,10 @@
 import { Col, Image } from "react-bootstrap";
 
-const ProviderName = ({ imgSrc, name }) => {
+const ProviderName = ({ imgSrc, name, inline = false }) => {
   return (
     <Col>
       <Image src={imgSrc}></Image>
-      <h5>{name}</h5>
+      <div className={`${inline ? "d-inline-block h4" : "h5"}`}> {name}</div>
     </Col>
   );
 };

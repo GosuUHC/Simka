@@ -11,10 +11,10 @@ const CallBackInfoCard = () => {
   const { phone } = usePhones();
 
   return (
-    <Card className="p-3">
+    <Card className="p-3 callBackInfoCardWrapper border-0" >
       <Card.Body>
         <Row>
-          <Col>
+          <Col xs={8} md={7} lg={7}>
             <Card.Title as="h3">Остались вопросы? </Card.Title>
             <Card.Text>
               <span className="subtitleText">
@@ -36,7 +36,7 @@ const CallBackInfoCard = () => {
               phone={phone}
             />
           </Col>
-          <Col>
+          <Col xs={4} md={5} lg={5}>
             <Placeholder className="w-100 h-100" />
           </Col>
         </Row>

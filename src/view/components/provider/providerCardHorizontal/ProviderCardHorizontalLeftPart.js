@@ -1,11 +1,11 @@
-import ProviderName from "./ProviderName";
+import ProviderName from "../ProviderName";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 
-const ProviderCardLeftPart = ({ imgSrc, name, component }) => {
+const ProviderCardHorizontalLeftPart = ({ imgSrc, name, component }) => {
   return (
     <Col xs="auto">
-      <ProviderName imgSrc={imgSrc} name={name}></ProviderName>
+      <ProviderName imgSrc={imgSrc} name={name} />
       <Button variant="link" bsPrefix="info" as="a">
         Подробнее о провайдере
       </Button>
@@ -14,4 +14,4 @@ const ProviderCardLeftPart = ({ imgSrc, name, component }) => {
   );
 };
 
-export default ProviderCardLeftPart;
+export default ProviderCardHorizontalLeftPart;

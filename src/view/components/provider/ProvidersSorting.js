@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import useAddress from "../../../viewmodel/hooks/address/useAddress";
 import useProviders from "../../../viewmodel/hooks/providers/useProviders";
-import { Col, Row, Stack } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { availableSortingOptions } from "../../../transport/providers";
 

@@ -1,14 +1,12 @@
 import Header from "./view/components/header/Header";
-import ProvidersPage from "./view/pages/providers/ProvidersPage";
 import Footer from "./view/components/footer/Footer";
+import Router from "./Router";
 
 function App() {
-  // Outlet
-
   return (
     <>
       <Header />
-      <ProvidersPage />
+      <Router />
       <Footer />
     </>
   );

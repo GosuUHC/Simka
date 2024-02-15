@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegram, faVk } from "@fortawesome/free-brands-svg-icons";
 import useSocialLinks from "../../../viewmodel/hooks/common/useSocialLinks";
 import usePhones from "../../../viewmodel/hooks/common/usePhones";
+import "./Footer.css";
 
 const Footer = () => {
   const { onClickTg, onClickVk } = useSocialLinks();
   const { techPhone, connectPhone } = usePhones();
 
   return (
-    <footer className="bg-light ">
+    <footer className="FooterWrapper">
       <div className="p-4">
         <Container>
           <Row className="pb-3">
