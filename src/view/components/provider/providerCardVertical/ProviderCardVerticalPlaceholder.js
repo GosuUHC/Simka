@@ -6,8 +6,8 @@ const ProviderCardVerticalPlaceholder = () => {
   const { phone } = usePhones();
 
   return (
-    <Col xs={12} sm={6} md={4} lg={3} className="d-flex align-self-stretch">
-      <Card className="border-0 d-flex">
+    <Col xs={12} sm={6} md={6} lg={3} className="py-1 d-flex">
+      <Card className="border-0">
         <Card.Body className="d-flex flex-column">
           <Card.Title as="h2" className="text-uppercase py-3">
             simka

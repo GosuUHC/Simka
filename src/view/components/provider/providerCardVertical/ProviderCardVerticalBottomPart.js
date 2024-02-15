@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 
 const ProviderCardVerticalBottomPart = ({ price, speed, speedUnits }) => {
   return (
-    <>
-      <Row>
+    <div className="d-flex flex-column ">
+      <Row className="align-content-end">
         <span>Самый дешевый тариф</span>
         <span className="d-flex justify-content-end">
           <div>
@@ -28,7 +28,7 @@ const ProviderCardVerticalBottomPart = ({ price, speed, speedUnits }) => {
       <Row>
         <Button variant="secondary">Подключить</Button>
       </Row>
-    </>
+    </div>
   );
 };
 

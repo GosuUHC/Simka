@@ -1,10 +1,10 @@
-import { Card, Stack } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Fragment } from "react";
 
 const ProviderCardVertical = ({ components }) => {
   return (
-    <Card className="border-0" body>
-      <Stack>
+    <Card className="border-0">
+      <Card.Body className="d-flex flex-column">
         {components.map((component, i) => {
           return (
             <Fragment key={i}>
@@ -13,7 +13,7 @@ const ProviderCardVertical = ({ components }) => {
             </Fragment>
           );
         })}
-      </Stack>
+      </Card.Body>
     </Card>
   );
 };

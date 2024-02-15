@@ -1,6 +1,6 @@
 import ProviderName from "../ProviderName";
 import ProviderRatingBadge from "../ProviderRatingBadge";
-import { Stack } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 const ProviderCardVerticalUpperPart = ({
   imgSrc,
@@ -10,7 +10,7 @@ const ProviderCardVerticalUpperPart = ({
   desc,
 }) => {
   return (
-    <Stack gap={2}>
+    <Col >
       <ProviderName imgSrc={imgSrc} name={name} inline={true} />
       <span className="text-muted">{name}</span>
       <ProviderRatingBadge
@@ -18,7 +18,7 @@ const ProviderCardVerticalUpperPart = ({
         isRecommended={isRecommended}
       />
       <span className="text-muted text-wrap mb-auto">{desc}</span>
-    </Stack>
+    </Col>
   );
 };
 

@@ -2,7 +2,7 @@ import useProviders from "../../../../viewmodel/hooks/providers/useProviders";
 import ProviderCardVerticalUpperPart from "./ProviderCardVerticalUpperPart";
 import ProviderCardVerticalBottomPart from "./ProviderCardVerticalBottomPart";
 import ProviderCardVertical from "./ProviderCardVertical";
-import { Col, Stack } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import ProviderCardVerticalPlaceholder from "./ProviderCardVerticalPlaceholder";
 import WithCarousel from "../../hoc/withCarousel/WithCarousel";
 
@@ -29,15 +29,22 @@ const ProvidersVerticalList = () => {
     );
 
     return (
-      <Col className="py-1 d-flex align-self-stretch " key={i + 1} xs={12} sm={6} md={4} lg={3}>
+      <Col
+        className="py-1 d-flex"
+        key={i + 1}
+        xs={12}
+        sm={6}
+        md={6}
+        lg={3}
+      >
         <ProviderCardVertical key={i} components={[upper, bottom]} />
       </Col>
     );
   });
 
-  const providersMappedAppended = [<ProviderCardVerticalPlaceholder key={0} />].concat(
-    providersMapped,
-  );
+  const providersMappedAppended = [
+    <ProviderCardVerticalPlaceholder key={0} />,
+  ].concat(providersMapped);
 
   const providersWithCarousel = WithCarousel({
     componentsList: providersMappedAppended,
@@ -45,13 +52,9 @@ const ProvidersVerticalList = () => {
   });
 
   return (
-    <Stack
-      className="justify-content-evenly py-4"
-      direction="horizontal"
-      gap={3}
-    >
+    <Row md={8} className="d-flex justify-content-evenly py-4">
       {providersWithCarousel}
-    </Stack>
+    </Row>
   );
 };
 
