@@ -15,7 +15,7 @@ const ProviderCardVerticalPlaceholder = () => {
 
           <Card.Text className="h5 py-4">Поможем выбрать провайдера</Card.Text>
           <Card.Text>Это быстро, легко и, самое главное, бесплатно</Card.Text>
-          <Card.Text className="mt-auto d-flex flex-column">
+          <span className="mt-auto d-flex flex-column">
             <Stack gap={2}>
               <Button variant="secondary" className="align-self-stretch">
                 Подобрать провайдера
@@ -27,7 +27,7 @@ const ProviderCardVerticalPlaceholder = () => {
                 </Button>
               </span>
             </Stack>
-          </Card.Text>
+          </span>
         </Card.Body>
       </Card>
     </Col>
