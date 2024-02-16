@@ -1,9 +1,9 @@
 import ApplicationFormInputs from "./ApplicationFormInputs";
 import Button from "react-bootstrap/Button";
 import { Card } from "react-bootstrap";
-import CallBackLinks from "../common/callBackInfoCard/CallBackLinks";
-import usePhones from "../../../viewmodel/hooks/common/usePhones";
-import useSocialLinks from "../../../viewmodel/hooks/common/useSocialLinks";
+import CallBackLinks from "../../common/callBackInfoCard/CallBackLinks";
+import usePhones from "../../../../viewmodel/hooks/common/usePhones";
+import useSocialLinks from "../../../../viewmodel/hooks/common/useSocialLinks";
 import "./ApplicationForm.css";
 
 const ApplicationForm = () => {
