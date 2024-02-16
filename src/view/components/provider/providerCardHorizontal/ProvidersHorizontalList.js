@@ -1,5 +1,5 @@
 import useProviders from "../../../../viewmodel/hooks/providers/useProviders";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ProviderStarRating from "../ProviderStarRating";
 import ProviderCardHorizontalLeftPart from "./ProviderCardHorizontalLeftPart";
 import ProviderCardHorizontalMiddlePart from "./ProviderCardHorizontalMiddlePart";
@@ -17,51 +17,57 @@ const ProvidersHorizontalList = () => {
 
   const vertical = useMediaQuery("(max-width:1000px)");
 
-  if (!isSuccess) {
-    return;
-  }
-
   const onShowMore = () => {
     setLimit(limit + 3);
   };
 
-  const providersMapped = providersData.slice(0, limit).map((provider, i) => {
-    const rating = (
-      <ProviderStarRating precision={0.1} value={provider.rating_overall} />
-    );
+  const providersMapped = useMemo(() => {
+    if (!isSuccess) return null;
 
-    const left = (
-      <ProviderCardHorizontalLeftPart
-        imgSrc={provider.image}
-        name={provider.name}
-        component={rating}
-      />
-    );
+    return providersData.slice(0, limit).map((provider) => {
+      const rating = (
+        <ProviderStarRating precision={0.1} value={provider.rating_overall} />
+      );
 
-    const middle = (
-      <ProviderCardHorizontalMiddlePart
-        minPrice={provider.min_price}
-        maxSpeed={provider.max_internet_speed_value}
-        maxSpeedUnits={provider.max_internet_speed_units}
-        plansCount={provider.plans_count}
-        promotionsCount={provider.promotions_count}
-        reviewsCount={provider.reviews_count}
-      />
-    );
+      const left = (
+        <ProviderCardHorizontalLeftPart
+          imgSrc={provider.image}
+          name={provider.name}
+          component={rating}
+        />
+      );
 
-    const right = (
-      <ProviderCardHorizontalRightPart
-        description={provider.description}
-        phone={provider.phone}
-      />
-    );
+      const middle = (
+        <ProviderCardHorizontalMiddlePart
+          minPrice={provider.min_price}
+          maxSpeed={provider.max_internet_speed_value}
+          maxSpeedUnits={provider.max_internet_speed_units}
+          plansCount={provider.plans_count}
+          promotionsCount={provider.promotions_count}
+          reviewsCount={provider.reviews_count}
+        />
+      );
 
-    return vertical ? (
-      <ProviderCardVertical key={i} components={[left, middle, right]} />
-    ) : (
-      <ProviderCardHorizontal key={i} components={[left, middle, right]} />
-    );
-  });
+      const right = (
+        <ProviderCardHorizontalRightPart
+          description={provider.description}
+          phone={provider.phone}
+        />
+      );
+
+      return vertical ? (
+        <ProviderCardVertical
+          key={provider.id}
+          components={[left, middle, right]}
+        />
+      ) : (
+        <ProviderCardHorizontal
+          key={provider.id}
+          components={[left, middle, right]}
+        />
+      );
+    });
+  }, [isSuccess, limit, providersData, vertical]);
 
   return (
     <Stack gap={3} className="pb-3">

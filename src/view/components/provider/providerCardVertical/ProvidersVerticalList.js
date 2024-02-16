@@ -5,42 +5,50 @@ import ProviderCardVertical from "./ProviderCardVertical";
 import { Col, Row } from "react-bootstrap";
 import ProviderCardVerticalPlaceholder from "./ProviderCardVerticalPlaceholder";
 import WithCarousel from "../../hoc/withCarousel/WithCarousel";
+import { useMemo } from "react";
 
 const ProvidersVerticalList = () => {
   const { providersData } = useProviders();
 
-  const providersMapped = providersData.map((provider, i) => {
-    const upper = (
-      <ProviderCardVerticalUpperPart
-        imgSrc={provider.image}
-        name={provider.name}
-        rating={provider.rating_overall}
-        isRecommended={i === 0}
-        desc={provider.description}
-      />
-    );
+  const providersMapped = useMemo(() => {
+    return providersData.map((provider) => {
+      const upper = (
+        <ProviderCardVerticalUpperPart
+          imgSrc={provider.image}
+          name={provider.name}
+          rating={provider.rating_overall}
+          isRecommended={provider.id === providersData[0].id}
+          desc={provider.description}
+          key={`upper-${provider.id}`}
+        />
+      );
 
-    const bottom = (
-      <ProviderCardVerticalBottomPart
-        price={provider.min_price}
-        speed={provider.max_internet_speed_value}
-        speedUnits={provider.max_internet_speed_units}
-      />
-    );
+      const bottom = (
+        <ProviderCardVerticalBottomPart
+          price={provider.min_price}
+          speed={provider.max_internet_speed_value}
+          speedUnits={provider.max_internet_speed_units}
+          key={`bottom-${provider.id}`}
+        />
+      );
 
-    return (
-      <Col
-        className="py-1 d-flex"
-        key={i + 1}
-        xs={12}
-        sm={6}
-        md={6}
-        lg={3}
-      >
-        <ProviderCardVertical key={i} components={[upper, bottom]} />
-      </Col>
-    );
-  });
+      return (
+        <Col
+          className="py-1 d-flex"
+          key={provider.id}
+          xs={12}
+          sm={6}
+          md={6}
+          lg={3}
+        >
+          <ProviderCardVertical
+            key={provider.id}
+            components={[upper, bottom]}
+          />
+        </Col>
+      );
+    });
+  }, [providersData]);
 
   const providersMappedAppended = [
     <ProviderCardVerticalPlaceholder key={0} />,
