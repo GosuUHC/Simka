@@ -12,4 +12,11 @@ const feedbacksExtendedApi = api.injectEndpoints({
   }),
 });
 
+export const feedbackReasons = [
+  "На сайте что-то не работает или работает некорректно",
+  "Неточности в информации на сайте",
+  "Предложить идею",
+  "Я знаю провайдера, которого у вас нет!",
+];
+
 export const { useAddNewFeedbackMutation } = feedbacksExtendedApi;

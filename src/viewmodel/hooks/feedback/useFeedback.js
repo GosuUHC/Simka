@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useAddNewFeedbackMutation } from "../../../transport/feedbacks";
 import {
+  setEmail,
   setMessage,
   setReason,
   setWantToGetAnswerBack,
 } from "../../state/slices/feedback";
+import { feedbackReasons } from "../../../transport/feedbacks";
 
 const useFeedback = () => {
   const dispatch = useDispatch();
-  const { reason, message, wantToGetAnswerBack } = useSelector(
+  const { reason, message, wantToGetAnswerBack, email } = useSelector(
     (state) => state.feedback,
   );
+
   const [addFeedback, { isLoading }] = useAddNewFeedbackMutation();
 
   const handleReasonChange = (reason) => {
@@ -21,13 +24,27 @@ const useFeedback = () => {
     dispatch(setMessage(message));
   };
 
-  const handleWantToGetAnswerBackChange = (wantToGetAnswerBack) => {
-    dispatch(setWantToGetAnswerBack(wantToGetAnswerBack));
+  const handleWantToGetAnswerBackChange = () => {
+    dispatch(setWantToGetAnswerBack(!wantToGetAnswerBack));
   };
 
-  const handleAddingFeedback = async ({ reason, message, email }) => {
+  const handleEmailChange = (email) => {
+    dispatch(setEmail(email));
+  };
+
+  const handleAddingFeedback = async () => {
+    console.log({
+      reason: feedbackReasons.indexOf(reason) + 1,
+      message,
+      email,
+    });
+
     try {
-      await addFeedback({ reason, message, email }).unwrap();
+      await addFeedback({
+        reason: feedbackReasons.indexOf(reason) + 1,
+        message,
+        email,
+      }).unwrap();
     } catch (e) {
       console.log(e);
     }
@@ -37,9 +54,11 @@ const useFeedback = () => {
     reason,
     message,
     wantToGetAnswerBack,
+    feedbackReasons,
     handleReasonChange,
     handleMessageChange,
     handleWantToGetAnswerBackChange,
+    handleEmailChange,
     handleAddingFeedback,
   };
 };

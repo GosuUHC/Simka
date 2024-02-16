@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Row } from "react-bootstrap";
 import AddressWithText from "../../components/address/AddressWithText";
 import AdvantagesList from "../../components/advantages/AdvantagesList";
-import ApplicationForm from "../../components/application/ApplicationForm";
+import ApplicationForm from "../../components/application/applicationForm/ApplicationForm";
 import Compilations from "../../components/compilations/Compilations";
 import Instruction from "../../components/instruction/Instruction";
 import FAQsCard from "../../components/faq/FAQsCard";

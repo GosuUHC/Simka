@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { timeForCall } from "../../../transport/callBackForms";
 
 const applicationFormInitialState = {
   name: "",
   phoneNumber: "",
-  selectedTime: null,
+  selectedTime: timeForCall[0],
 };
 
 const applicationSlice = createSlice({
