@@ -5,6 +5,7 @@ const applicationFormInitialState = {
   name: "",
   phoneNumber: "",
   selectedTime: timeForCall[0],
+  isSuccess: null,
 };
 
 const applicationSlice = createSlice({
@@ -20,9 +21,12 @@ const applicationSlice = createSlice({
     setSelectedTime: (state, action) => {
       state.selectedTime = action.payload;
     },
+    setIsSuccess: (state, action) => {
+      state.isSuccess = action.payload;
+    },
   },
 });
 
-export const { setName, setPhoneNumber, setSelectedTime } =
+export const { setName, setPhoneNumber, setSelectedTime, setIsSuccess } =
   applicationSlice.actions;
 export const applicationReducer = applicationSlice.reducer;

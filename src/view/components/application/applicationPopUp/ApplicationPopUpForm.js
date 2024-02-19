@@ -1,9 +1,14 @@
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Card, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import useApplicationForm from "../../../../viewmodel/hooks/application/useApplicationForm";
 import Button from "react-bootstrap/Button";
 import { InfoCircle } from "react-bootstrap-icons";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { isPossiblePhoneNumber } from "react-phone-number-input";
+import "./ApplicationPopUpForm.css";
 
 const ApplicationPopUpForm = ({ show, handleClose }) => {
   const {
@@ -11,11 +16,45 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
     phoneNumber,
     selectedTime,
     timeForCall,
+    isSuccess,
     handleNameChange,
     handlePhoneNumberChange,
     handleSelectedTimeChange,
     handleAddingCallback,
   } = useApplicationForm();
+
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const errors = {};
+
+    const isPhonePossible = isPossiblePhoneNumber(phoneNumber);
+
+    // if (!name) {
+    //   errors.name = "Пожалуйста, введите ваше имя";
+    // }
+    if (!isPhonePossible) {
+      errors.phone = "Пожалуйста, введите корректный телефон";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async () => {
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      await handleAddingCallback();
+
+      if (!isSuccess) {
+        alert("FAILED");
+      } else {
+        alert("SUCCESS");
+      }
+      setErrors(errors);
+    } else {
+      setErrors(errors);
+    }
+  };
 
   return (
     <Modal show={show} onHide={handleClose} size="lg" centered>
@@ -31,16 +70,24 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
                 value={name ?? ""}
                 onChange={(e) => handleNameChange(e.target.value)}
                 placeholder="Имя"
+                isInvalid={!!errors.name}
               />
+              <Form.Control.Feedback type="invalid">
+                {errors.name}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Введите ваш телефон</Form.Label>
-              <Form.Control
-                type="tel"
-                value={phoneNumber ?? ""}
-                onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                placeholder="+7 (___) ___-__-__"
+              <PhoneInput
+                className="form-control"
+                defaultCountry="RU"
+                international
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
               />
+              <Form.Control className="d-none" isInvalid={!!errors.phone} />
+              <Form.Control.Feedback type="invalid">
+                {errors.phone}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-4">
               <Form.Label>Удобное время для звонка</Form.Label>
@@ -56,7 +103,7 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
               </Form.Select>
             </Form.Group>
             <Row>
-              <Button onClick={handleAddingCallback} variant="secondary">
+              <Button onClick={handleSubmit} variant="secondary">
                 Оставить заявку
               </Button>
             </Row>
