@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setIsSuccess,
   setName,
   setPhoneNumber,
   setSelectedTime,
@@ -13,13 +12,13 @@ import useAddress from "../address/useAddress";
 
 const useApplicationForm = () => {
   const dispatch = useDispatch();
-  const { name, phoneNumber, selectedTime, isSuccess } = useSelector(
+  const { name, phoneNumber, selectedTime } = useSelector(
     (state) => state.application,
   );
 
   const { city: address } = useAddress();
 
-  const [sendCallbackForm, { error }] = useSendCallBackFormMutation();
+  const [sendCallbackForm] = useSendCallBackFormMutation();
 
   const handleNameChange = (name) => {
     dispatch(setName(name));
@@ -58,7 +57,6 @@ const useApplicationForm = () => {
     phoneNumber,
     selectedTime,
     timeForCall,
-    isSuccess,
     handleNameChange,
     handlePhoneNumberChange,
     handleSelectedTimeChange,
