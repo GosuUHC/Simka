@@ -16,7 +16,6 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
     phoneNumber,
     selectedTime,
     timeForCall,
-    isSuccess,
     handleNameChange,
     handlePhoneNumberChange,
     handleSelectedTimeChange,
@@ -30,9 +29,9 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
 
     const isPhonePossible = isPossiblePhoneNumber(phoneNumber);
 
-    // if (!name) {
-    //   errors.name = "Пожалуйста, введите ваше имя";
-    // }
+    if (!name) {
+      errors.name = "Пожалуйста, введите ваше имя";
+    }
     if (!isPhonePossible) {
       errors.phone = "Пожалуйста, введите корректный телефон";
     }
@@ -43,9 +42,9 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
   const handleSubmit = async () => {
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      await handleAddingCallback();
+      const success = await handleAddingCallback();
 
-      if (!isSuccess) {
+      if (!success) {
         alert("FAILED");
       } else {
         alert("SUCCESS");

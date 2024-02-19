@@ -46,10 +46,10 @@ const useApplicationForm = () => {
 
     try {
       await sendCallbackForm(callbackData).unwrap();
-      dispatch(setIsSuccess(true));
+      return true;
     } catch (e) {
       console.log(e);
-      dispatch(setIsSuccess(false));
+      return false;
     }
   };
 
