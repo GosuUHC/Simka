@@ -23,6 +23,6 @@ const applicationSlice = createSlice({
   },
 });
 
-export const { setName, setPhoneNumber, setSelectedTime } =
+export const { setName, setPhoneNumber, setSelectedTime, setIsSuccess } =
   applicationSlice.actions;
 export const applicationReducer = applicationSlice.reducer;

@@ -18,7 +18,7 @@ const useApplicationForm = () => {
 
   const { city: address } = useAddress();
 
-  const [sendCallbackForm, { isLoading }] = useSendCallBackFormMutation();
+  const [sendCallbackForm] = useSendCallBackFormMutation();
 
   const handleNameChange = (name) => {
     dispatch(setName(name));
@@ -45,8 +45,10 @@ const useApplicationForm = () => {
 
     try {
       await sendCallbackForm(callbackData).unwrap();
+      return true;
     } catch (e) {
       console.log(e);
+      return false;
     }
   };
 

@@ -1,10 +1,7 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Col, Row } from "react-bootstrap";
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "react-bootstrap-icons";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 import "./WithCarousel.css";
 
 const WithCarousel = ({ componentsList, itemsPerPage }) => {
@@ -23,16 +20,18 @@ const WithCarousel = ({ componentsList, itemsPerPage }) => {
     ref.current.next();
   };
 
-  const chunkedComponents = [];
-  for (let i = 0; i < componentsList.length; i += itemsPerPage) {
-    chunkedComponents.push(componentsList.slice(i, i + itemsPerPage));
-  }
+  const renderComponents = useMemo(() => {
+    const chunkedComponents = [];
+    for (let i = 0; i < componentsList.length; i += itemsPerPage) {
+      chunkedComponents.push(componentsList.slice(i, i + itemsPerPage));
+    }
 
-  const renderComponents = chunkedComponents.map((chunk, i) => (
-    <Carousel.Item key={i}>
-      <Row>{chunk}</Row>
-    </Carousel.Item>
-  ));
+    return chunkedComponents.map((chunk, i) => (
+      <Carousel.Item key={i}>
+        <Row>{chunk}</Row>
+      </Carousel.Item>
+    ));
+  }, [componentsList, itemsPerPage]);
 
   return (
     <Row>
