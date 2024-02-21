@@ -3,17 +3,56 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import useFeedback from "../../../viewmodel/hooks/feedback/useFeedback";
+import React, { useState } from "react";
 
 const FeedbackPopUp = ({ show, handleClose }) => {
   const {
     wantToGetAnswerBack,
     feedbackReasons,
+    message,
+    email,
     handleReasonChange,
     handleMessageChange,
     handleWantToGetAnswerBackChange,
     handleEmailChange,
     handleAddingFeedback,
   } = useFeedback();
+
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const errors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const isCorrectEmail = emailRegex.test(email);
+
+    if (!isCorrectEmail) {
+      errors.email = "Пожалуйста введите корректный email";
+    }
+
+    if (!message) {
+      errors.message = "Пожалуйста введите сообщение";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async () => {
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      const successfulRequest = await handleAddingFeedback();
+
+      if (!successfulRequest) {
+        errors.unsuccessfulRequest = "Ошибка отправки";
+      } else {
+        errors.successfulRequest = "Успешно отправлено";
+      }
+
+      setErrors(errors);
+    } else {
+      setErrors(errors);
+    }
+  };
 
   return (
     <Modal show={show} onHide={handleClose} size="lg" centered>
@@ -27,6 +66,7 @@ const FeedbackPopUp = ({ show, handleClose }) => {
             {feedbackReasons.map((reason, i) => (
               <Form.Check
                 key={i}
+                defaultChecked={i === 0}
                 name="group1"
                 onClick={() => handleReasonChange(feedbackReasons[i])}
                 type="radio"
@@ -41,12 +81,19 @@ const FeedbackPopUp = ({ show, handleClose }) => {
               необходимо
             </span>
           </Row>
-          <Form.Control
-            className="border-2"
-            as="textarea"
-            rows={4}
-            onChange={(e) => handleMessageChange(e.target.value)}
-          />
+          <Form.Group>
+            <Form.Control
+              className="border-2"
+              as="textarea"
+              rows={4}
+              value={message}
+              isInvalid={!!errors.message}
+              onChange={(e) => handleMessageChange(e.target.value)}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.message}
+            </Form.Control.Feedback>
+          </Form.Group>
           <Form.Check
             className="py-2"
             onClick={handleWantToGetAnswerBackChange}
@@ -54,18 +101,37 @@ const FeedbackPopUp = ({ show, handleClose }) => {
             defaultChecked={wantToGetAnswerBack}
             label={<span className="text-muted">Хочу получить ответ</span>}
           />
-          <Form.Control
-            className="py-2 border-2"
-            onChange={(e) => handleEmailChange(e.target.value)}
-            disabled={!wantToGetAnswerBack}
-            type="email"
-            placeholder="Email"
-          />
+          <Form.Group>
+            <Form.Control
+              className="py-2 border-2"
+              type="email"
+              value={email}
+              onChange={(e) => handleEmailChange(e.target.value)}
+              placeholder="Email"
+              isInvalid={!!errors.email}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.email}
+            </Form.Control.Feedback>
+          </Form.Group>
           <Row className="py-3 text-center">
             <Col>
-              <Button onClick={handleAddingFeedback} variant="secondary">
-                Отправить
-              </Button>
+              <Form.Group>
+                <Button onClick={handleSubmit} variant="secondary">
+                  Отправить
+                </Button>
+                <Form.Control
+                  className="d-none"
+                  isInvalid={!!errors.unsuccessfulRequest}
+                  isValid={!!errors.successfulRequest}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.unsuccessfulRequest}
+                </Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">
+                  {errors.successfulRequest}
+                </Form.Control.Feedback>
+              </Form.Group>
             </Col>
           </Row>
           <span className="text-secondary">
