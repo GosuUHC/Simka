@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const baseUrl = "https://simka.make.st/api";
+import { baseUrl } from "./config";
 
 export const api = createApi({
   reducerPath: "simkaApi",
