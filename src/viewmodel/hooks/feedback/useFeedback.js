@@ -14,7 +14,7 @@ const useFeedback = () => {
     (state) => state.feedback,
   );
 
-  const [addFeedback, { isLoading }] = useAddNewFeedbackMutation();
+  const [addFeedback] = useAddNewFeedbackMutation();
 
   const handleReasonChange = (reason) => {
     dispatch(setReason(reason));
@@ -33,20 +33,17 @@ const useFeedback = () => {
   };
 
   const handleAddingFeedback = async () => {
-    console.log({
-      reason: feedbackReasons.indexOf(reason) + 1,
-      message,
-      email,
-    });
-
     try {
       await addFeedback({
         reason: feedbackReasons.indexOf(reason) + 1,
+        response_agreement: 1,
         message,
         email,
       }).unwrap();
+      return true;
     } catch (e) {
       console.log(e);
+      return false;
     }
   };
 
@@ -55,6 +52,7 @@ const useFeedback = () => {
     message,
     wantToGetAnswerBack,
     feedbackReasons,
+    email,
     handleReasonChange,
     handleMessageChange,
     handleWantToGetAnswerBackChange,

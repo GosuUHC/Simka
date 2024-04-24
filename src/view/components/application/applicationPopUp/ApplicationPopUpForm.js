@@ -32,6 +32,7 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
     if (!name) {
       errors.name = "Пожалуйста, введите ваше имя";
     }
+
     if (!isPhonePossible) {
       errors.phone = "Пожалуйста, введите корректный телефон";
     }
@@ -42,13 +43,14 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
   const handleSubmit = async () => {
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      const success = await handleAddingCallback();
+      const successfulRequest = await handleAddingCallback();
 
-      if (!success) {
-        alert("FAILED");
+      if (!successfulRequest) {
+        errors.unsuccessfulRequest = "Ошибка отправки";
       } else {
-        alert("SUCCESS");
+        errors.successfulRequest = "Успешно отправлено";
       }
+
       setErrors(errors);
     } else {
       setErrors(errors);
@@ -101,11 +103,24 @@ const ApplicationPopUpForm = ({ show, handleClose }) => {
                 ))}
               </Form.Select>
             </Form.Group>
-            <Row>
-              <Button onClick={handleSubmit} variant="secondary">
-                Оставить заявку
-              </Button>
-            </Row>
+            <Form.Group>
+              <Row className="d-flex text-center">
+                <Button onClick={handleSubmit} variant="secondary">
+                  Оставить заявку
+                </Button>
+                <Form.Control
+                  className="d-none"
+                  isInvalid={!!errors.unsuccessfulRequest}
+                  isValid={!!errors.successfulRequest}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.unsuccessfulRequest}
+                </Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">
+                  {errors.successfulRequest}
+                </Form.Control.Feedback>
+              </Row>
+            </Form.Group>
             <Row className="d-flex text-center py-2">
               <Button variant="link" as="a" bsPrefix="info">
                 <InfoCircle /> Что будет после оформления заявки
